@@ -144,14 +144,19 @@ public class JavaNetHTTPSender extends BasicHandler {
                 in = connection.getErrorStream();
             } else {
                 // TODO: extract charset encoding from document type (reuse the code in org.apache.axisMessage?)
-                Reader reader = new InputStreamReader(connection.getErrorStream(), "UTF-8");
-                StringBuffer content = new StringBuffer();
-                char[] buffer = new char[4096];
-                int c;
-                while ((c = reader.read(buffer)) != -1) {
-                    content.append(buffer, 0, c);
+                StringBuilder content = new StringBuilder();
+                InputStream errorStream = connection.getErrorStream();
+                if (errorStream != null) {
+                    try (Reader reader = new InputStreamReader(errorStream, "UTF-8")) {
+                        char[] buffer = new char[4096];
+                        int c;
+                        while ((c = reader.read(buffer)) != -1) {
+                            content.append(buffer, 0, c);
+                        }
+                    }
+                } else {
+                    content.append("No response body.");
                 }
-                reader.close();
                 AxisFault fault = new AxisFault("HTTP", statusCode + " " + connection.getResponseMessage(), null, null);
                 fault.setFaultDetailString(content.toString());
                 fault.addFaultDetail(Constants.QNAME_FAULTDETAIL_HTTPERRORCODE, Integer.toString(statusCode));
