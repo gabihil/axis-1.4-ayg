@@ -25,6 +25,7 @@ import org.apache.axis.utils.XMLUtils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Comment;
+import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -36,6 +37,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.ProcessingInstruction;
+import org.w3c.dom.UserDataHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.SOAPException;
@@ -485,6 +487,72 @@ implements org.w3c.dom.Document, java.io.Serializable {
         return delegate.getElementById(elementId);
     }
 
+    public String getInputEncoding() {
+        return delegate != null ? delegate.getInputEncoding() : null;
+    }
+
+    public String getXmlEncoding() {
+        return delegate != null ? delegate.getXmlEncoding() : null;
+    }
+
+    public boolean getXmlStandalone() {
+        return delegate != null && delegate.getXmlStandalone();
+    }
+
+    public void setXmlStandalone(boolean xmlStandalone) throws DOMException {
+        if (delegate != null) {
+            delegate.setXmlStandalone(xmlStandalone);
+        }
+    }
+
+    public String getXmlVersion() {
+        return delegate != null ? delegate.getXmlVersion() : null;
+    }
+
+    public void setXmlVersion(String xmlVersion) throws DOMException {
+        if (delegate != null) {
+            delegate.setXmlVersion(xmlVersion);
+        }
+    }
+
+    public boolean getStrictErrorChecking() {
+        return delegate != null && delegate.getStrictErrorChecking();
+    }
+
+    public void setStrictErrorChecking(boolean strictErrorChecking) {
+        if (delegate != null) {
+            delegate.setStrictErrorChecking(strictErrorChecking);
+        }
+    }
+
+    public String getDocumentURI() {
+        return delegate != null ? delegate.getDocumentURI() : null;
+    }
+
+    public void setDocumentURI(String documentURI) {
+        if (delegate != null) {
+            delegate.setDocumentURI(documentURI);
+        }
+    }
+
+    public Node adoptNode(Node source) throws DOMException {
+        return delegate != null ? delegate.adoptNode(source) : null;
+    }
+
+    public DOMConfiguration getDomConfig() {
+        return delegate != null ? delegate.getDomConfig() : null;
+    }
+
+    public void normalizeDocument() {
+        if (delegate != null) {
+            delegate.normalizeDocument();
+        }
+    }
+
+    public Node renameNode(Node node, String namespaceURI, String qualifiedName) throws DOMException {
+        return delegate != null ? delegate.renameNode(node, namespaceURI, qualifiedName) : null;
+    }
+
     /**
      * Node Implementation
      *  
@@ -680,5 +748,55 @@ implements org.w3c.dom.Document, java.io.Serializable {
 
     public boolean hasAttributes() {
         throw new DOMException(DOMException.NOT_SUPPORTED_ERR, "");
+    }
+
+    public String getBaseURI() {
+        return delegate != null ? delegate.getBaseURI() : null;
+    }
+
+    public short compareDocumentPosition(Node other) throws DOMException {
+        return delegate != null ? delegate.compareDocumentPosition(other) : 0;
+    }
+
+    public String getTextContent() throws DOMException {
+        return delegate != null ? delegate.getTextContent() : null;
+    }
+
+    public void setTextContent(String textContent) throws DOMException {
+        if (delegate != null) {
+            delegate.setTextContent(textContent);
+        }
+    }
+
+    public boolean isSameNode(Node other) {
+        return delegate != null && delegate.isSameNode(other);
+    }
+
+    public String lookupPrefix(String namespaceURI) {
+        return delegate != null ? delegate.lookupPrefix(namespaceURI) : null;
+    }
+
+    public boolean isDefaultNamespace(String namespaceURI) {
+        return delegate != null && delegate.isDefaultNamespace(namespaceURI);
+    }
+
+    public String lookupNamespaceURI(String prefix) {
+        return delegate != null ? delegate.lookupNamespaceURI(prefix) : null;
+    }
+
+    public boolean isEqualNode(Node arg) {
+        return delegate != null && delegate.isEqualNode(arg);
+    }
+
+    public Object getFeature(String feature, String version) {
+        return delegate != null ? delegate.getFeature(feature, version) : null;
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        return delegate != null ? delegate.setUserData(key, data, handler) : null;
+    }
+
+    public Object getUserData(String key) {
+        return delegate != null ? delegate.getUserData(key) : null;
     }
 }

@@ -40,6 +40,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
+import org.w3c.dom.TypeInfo;
 import org.w3c.dom.NamedNodeMap;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
@@ -1734,6 +1735,22 @@ public class MessageElement extends NodeImpl implements SOAPElement,
                 return true;
         }
         return false;
+    }
+
+    public TypeInfo getSchemaTypeInfo() {
+        return null;
+    }
+
+    public void setIdAttribute(String name, boolean isId) throws DOMException {
+        // Not supported: no-op for legacy DOM implementation.
+    }
+
+    public void setIdAttributeNS(String namespaceURI, String localName, boolean isId) throws DOMException {
+        // Not supported: no-op for legacy DOM implementation.
+    }
+
+    public void setIdAttributeNode(Attr idAttr, boolean isId) throws DOMException {
+        // Not supported: no-op for legacy DOM implementation.
     }
 
     /**

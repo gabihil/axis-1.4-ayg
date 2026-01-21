@@ -27,7 +27,7 @@ import org.w3c.dom.DOMException;
  * @author Davanum Srinivas (dims@yahoo.com)
  * @author Heejune Ahn      (cityboy@tmax.co.kr)
  */
-public class Text extends NodeImpl implements javax.xml.soap.Text {
+public class Text extends NodeImpl implements javax.xml.soap.Text, org.w3c.dom.Text {
 
     public Text(org.w3c.dom.CharacterData data) {
         if ( data == null )
@@ -113,6 +113,28 @@ public class Text extends NodeImpl implements javax.xml.soap.Text {
             }
         }
         return tailText;
+    }
+
+    public boolean isElementContentWhitespace() {
+        if (textRep instanceof org.w3c.dom.Text) {
+            return ((org.w3c.dom.Text) textRep).isElementContentWhitespace();
+        }
+        return false;
+    }
+
+    public String getWholeText() {
+        if (textRep instanceof org.w3c.dom.Text) {
+            return ((org.w3c.dom.Text) textRep).getWholeText();
+        }
+        return getNodeValue();
+    }
+
+    public org.w3c.dom.Text replaceWholeText(String content) throws DOMException {
+        if (textRep instanceof org.w3c.dom.Text) {
+            return ((org.w3c.dom.Text) textRep).replaceWholeText(content);
+        }
+        setData(content);
+        return this;
     }
 
     /**

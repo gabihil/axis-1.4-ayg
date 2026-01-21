@@ -23,6 +23,7 @@
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
         <version>9</version>
+        <relativePath>maven/apache-parent-9.pom</relativePath>
     </parent>
     <groupId>org.apache.axis</groupId>
     <artifactId>axis-project</artifactId>
@@ -178,12 +179,12 @@
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <configuration>
-                        <source>1.8</source>
+                        <source>17</source>
                     </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.11</version>
+                    <version>3.1.2</version>
                     <configuration>
                         <systemPropertyVariables>
                             <!-- Axis doesn't contain META-INF/services/* files for SAAJ. Instead, the SAAJ API
@@ -198,7 +199,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>2.11</version>
+                    <version>3.1.2</version>
                     <configuration>
                         <systemPropertyVariables>
                             <!-- See the corresponding surefire configuration for more information about this. -->
@@ -279,8 +280,9 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.11.0</version>
                 <configuration>
+                    <release>${javaVersion}</release>
                     <source>${javaVersion}</source>
                     <target>${javaVersion}</target>
                 </configuration>
@@ -389,7 +391,7 @@
         </plugins>
     </reporting>
     <properties>
-        <javaVersion>1.8</javaVersion>
+        <javaVersion>17</javaVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <baseUrl>http://axis.apache.org/axis/java</baseUrl>

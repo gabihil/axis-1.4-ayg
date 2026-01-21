@@ -30,6 +30,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
+import org.w3c.dom.UserDataHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.AttributesImpl;
 
@@ -37,7 +38,10 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * This is our implementation of the DOM node
@@ -56,6 +60,7 @@ public class NodeImpl implements org.w3c.dom.Node, javax.xml.soap.Node,
     protected Document document = null;
     protected NodeImpl parent = null;
     protected ArrayList children = null;
+    private transient Map userData;
 
     // ...or as DOM
     protected CharacterData textRep = null;
@@ -846,6 +851,118 @@ public class NodeImpl implements org.w3c.dom.Node, javax.xml.soap.Node,
         if (parent != null) {
             ((NodeImpl) parent).setDirty();
         }
+    }
+
+    public String getBaseURI() {
+        return null;
+    }
+
+    public short compareDocumentPosition(Node other) throws DOMException {
+        if (other == this) {
+            return 0;
+        }
+        return 0;
+    }
+
+    public String getTextContent() throws DOMException {
+        if (textRep != null) {
+            return textRep.getData();
+        }
+        if (children == null || children.isEmpty()) {
+            return null;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < children.size(); i++) {
+            Node child = (Node) children.get(i);
+            if (child != null) {
+                String childText = child.getTextContent();
+                if (childText != null) {
+                    builder.append(childText);
+                }
+            }
+        }
+        return builder.toString();
+    }
+
+    public void setTextContent(String textContent) throws DOMException {
+        setDirty();
+        if (textRep != null) {
+            textRep.setData(textContent);
+            return;
+        }
+        if (textContent == null) {
+            if (children != null) {
+                children.clear();
+            }
+            return;
+        }
+        children = new ArrayList();
+        children.add(new org.apache.axis.message.Text(textContent));
+    }
+
+    public boolean isSameNode(Node other) {
+        return this == other;
+    }
+
+    public String lookupPrefix(String namespaceURI) {
+        if (namespaceURI == null) {
+            return null;
+        }
+        if (namespaceURI.equals(this.namespaceURI)) {
+            return prefix;
+        }
+        return parent != null ? parent.lookupPrefix(namespaceURI) : null;
+    }
+
+    public boolean isDefaultNamespace(String namespaceURI) {
+        if (namespaceURI == null) {
+            return this.namespaceURI == null;
+        }
+        return namespaceURI.equals(this.namespaceURI) && (prefix == null || prefix.length() == 0);
+    }
+
+    public String lookupNamespaceURI(String lookupPrefix) {
+        if (lookupPrefix == null || lookupPrefix.length() == 0) {
+            return (prefix == null || prefix.length() == 0) ? namespaceURI : null;
+        }
+        if (lookupPrefix.equals(prefix)) {
+            return namespaceURI;
+        }
+        return parent != null ? parent.lookupNamespaceURI(lookupPrefix) : null;
+    }
+
+    public boolean isEqualNode(Node arg) {
+        if (arg == this) {
+            return true;
+        }
+        if (arg == null) {
+            return false;
+        }
+        if (getNodeType() != arg.getNodeType()) {
+            return false;
+        }
+        return Objects.equals(getNodeName(), arg.getNodeName())
+                && Objects.equals(getLocalName(), arg.getLocalName())
+                && Objects.equals(getNamespaceURI(), arg.getNamespaceURI())
+                && Objects.equals(getNodeValue(), arg.getNodeValue());
+    }
+
+    public Object getFeature(String feature, String version) {
+        return null;
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        if (userData == null) {
+            userData = new HashMap();
+        }
+        return userData.put(key, data);
+    }
+
+    public Object getUserData(String key) {
+        if (userData == null) {
+            return null;
+        }
+        return userData.get(key);
     }
 
     /* clear dirty flag recursively */
