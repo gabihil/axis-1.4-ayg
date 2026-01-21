@@ -22,11 +22,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 /**
@@ -67,6 +71,26 @@ public class SOAPMonitorService extends HttpServlet {
    */
   private static ServerSocket server_socket = null;
   private static Vector       connections = null;
+  private static final Set    ALLOWED_SERIALIZED_CLASSES;
+
+  static {
+    Set allowed = new HashSet();
+    allowed.add("java.lang.String");
+    allowed.add("java.lang.Integer");
+    allowed.add("java.lang.Long");
+    allowed.add("java.lang.Short");
+    allowed.add("java.lang.Byte");
+    allowed.add("java.lang.Boolean");
+    allowed.add("java.lang.Character");
+    allowed.add("java.lang.Float");
+    allowed.add("java.lang.Double");
+    allowed.add("java.util.Vector");
+    allowed.add("java.lang.Object");
+    allowed.add("[Ljava.lang.String;");
+    allowed.add("[Ljava.lang.Object;");
+    allowed.add("[B");
+    ALLOWED_SERIALIZED_CLASSES = Collections.unmodifiableSet(allowed);
+  }
 
   /**
    * Constructor
@@ -217,7 +241,7 @@ public class SOAPMonitorService extends HttpServlet {
         // needed by the ObjectInputStream on the other end
         out = new ObjectOutputStream(socket.getOutputStream());
         out.flush();
-        in = new ObjectInputStream(socket.getInputStream());
+        in = new SafeObjectInputStream(socket.getInputStream());
       } catch (Exception e) {}
       // Add the connection to our list
       synchronized (connections) {
@@ -295,5 +319,19 @@ public class SOAPMonitorService extends HttpServlet {
       }
     }
   }
-}
 
+  private static class SafeObjectInputStream extends ObjectInputStream {
+    public SafeObjectInputStream(java.io.InputStream in) throws IOException {
+      super(in);
+    }
+
+    protected Class resolveClass(java.io.ObjectStreamClass desc)
+        throws IOException, ClassNotFoundException {
+      String name = desc.getName();
+      if (!ALLOWED_SERIALIZED_CLASSES.contains(name)) {
+        throw new InvalidClassException("Unauthorized deserialization attempt", name);
+      }
+      return super.resolveClass(desc);
+    }
+  }
+}

@@ -14,11 +14,6 @@
  * limitations under the License.
  */
 
-import org.apache.axis.utils.XMLUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
 /**
  * See \samples\stock\readme for info.
  *
@@ -27,34 +22,13 @@ import org.w3c.dom.NodeList;
  */
 public class StockQuoteService {
   public float getQuote (String symbol) throws Exception {
-    // get a real (delayed by 20min) stockquote from 
-    // http://www.xmltoday.com/examples/stockquote/. The IP addr 
-    // below came from the host that the above form posts to ..
-
-    if ( symbol.equals("XXX") ) return( (float) 66.25 );
-
-
-    Document doc = null ;
-    
-    doc = XMLUtils.newDocument( "http://www.xmltoday.com/examples/" +
-                                "stockquote/getxmlquote.vep?s="+symbol );
-
-    Element  elem = doc.getDocumentElement();
-    NodeList list = elem.getElementsByTagName("stock_quote");
-
-    elem = (Element) list.item(0);
-    list = elem.getElementsByTagName( "price" );
-    elem = (Element) list.item( 0 );
-    String quoteStr = elem.getAttribute("value");
-    try {
-      return Float.valueOf(quoteStr).floatValue();
-    } catch (NumberFormatException e1) {
-      // maybe its an int?
-      try {
-        return Integer.valueOf(quoteStr).intValue() * 1.0F;
-      } catch (NumberFormatException e2) {
-        return -1.0F;
-      }
+    // NOTE: This legacy sample previously fetched data from an external URL.
+    // That behavior can be exploited to trigger SSRF and redirect-based attacks,
+    // so the external lookup is disabled in this fork.
+    if ("XXX".equals(symbol)) {
+      return (float) 66.25;
     }
+
+    throw new Exception("External quote lookup disabled for security reasons.");
   }
 }
