@@ -63,6 +63,8 @@ The following Axis 1.4 components are intentionally excluded:
 
 ## Security fixes
 
+Additional guidance is captured in `docs/security-hardening.md`.
+
 
 1.4-ayg-01
 * [CVE-2007-2353](https://nvd.nist.gov/vuln/detail/CVE-2007-2353)
