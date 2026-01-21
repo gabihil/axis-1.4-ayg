@@ -137,42 +137,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>xerces</groupId>
-                                    <artifactId>xmlParserAPIs</artifactId>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>axis-saaj</artifactId>
-                                    <version>${project.version}</version>
-                                </artifactItem>
-                            </artifactItems>
-                            <overWrite>true</overWrite>
-                            <outputDirectory>${project.build.directory}/endorsed</outputDirectory>
-                            <stripVersion>true</stripVersion>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgument>
-                        <!-- Necessary because we only support DOM 2 and SAAJ 1.2 -->
-                        -Xbootclasspath/p:${project.build.directory}/endorsed/xmlParserAPIs.jar${path.separator}${project.build.directory}/endorsed/axis-saaj.jar
-                    </compilerArgument>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <includes>
