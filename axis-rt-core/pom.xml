@@ -117,21 +117,22 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>gmaven-plugin</artifactId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>generate-timestamp</id>
                         <phase>initialize</phase>
                         <goals>
-                            <goal>execute</goal>
+                            <goal>run</goal>
                         </goals>
                         <configuration>
-                            <source>
-                                import java.util.Date
-                                import java.text.MessageFormat
-                                project.properties['today'] = MessageFormat.format("{0,date,MMM dd, yyyy (HH:mm:ss z)}", new Date())
-                            </source>
+                            <exportAntProperties>true</exportAntProperties>
+                            <target>
+                                <tstamp>
+                                    <format property="today" pattern="MMM dd, yyyy (HH:mm:ss z)"/>
+                                </tstamp>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>

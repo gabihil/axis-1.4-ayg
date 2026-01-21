@@ -23,6 +23,7 @@
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
         <version>9</version>
+        <relativePath>maven/apache-parent-9.pom</relativePath>
     </parent>
     <groupId>org.apache.axis</groupId>
     <artifactId>axis-project</artifactId>

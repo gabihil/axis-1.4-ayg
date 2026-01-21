@@ -34,6 +34,7 @@ import org.apache.commons.logging.Log;
 import org.w3c.dom.Attr;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Comment;
+import org.w3c.dom.DOMConfiguration;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -46,6 +47,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.ProcessingInstruction;
 import org.w3c.dom.Text;
+import org.w3c.dom.UserDataHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -1122,6 +1124,50 @@ public class SOAPPart extends javax.xml.soap.SOAPPart implements Part
         return document.getElementById(elementId);
     }
 
+    public String getInputEncoding() {
+        return document.getInputEncoding();
+    }
+
+    public String getXmlEncoding() {
+        return document.getXmlEncoding();
+    }
+
+    public boolean getXmlStandalone() {
+        return document.getXmlStandalone();
+    }
+
+    public void setXmlStandalone(boolean xmlStandalone) throws DOMException {
+        document.setXmlStandalone(xmlStandalone);
+    }
+
+    public String getXmlVersion() {
+        return document.getXmlVersion();
+    }
+
+    public void setXmlVersion(String xmlVersion) throws DOMException {
+        document.setXmlVersion(xmlVersion);
+    }
+
+    public String getDocumentURI() {
+        return document.getDocumentURI();
+    }
+
+    public void setDocumentURI(String documentURI) {
+        document.setDocumentURI(documentURI);
+    }
+
+    public DOMConfiguration getDomConfig() {
+        return document.getDomConfig();
+    }
+
+    public void normalizeDocument() {
+        document.normalizeDocument();
+    }
+
+    public Node renameNode(Node node, String namespaceURI, String qualifiedName) throws DOMException {
+        return document.renameNode(node, namespaceURI, qualifiedName);
+    }
+
     /////////////////////////////////////////////////////////////
 
     public String getEncoding()
@@ -1147,13 +1193,13 @@ public class SOAPPart extends javax.xml.soap.SOAPPart implements Part
 
     public  boolean getStrictErrorChecking()
     {
-        throw new UnsupportedOperationException("Not yet implemented.73");
+        return document.getStrictErrorChecking();
     }
 
 
     public  void setStrictErrorChecking(boolean flag)
     {
-        throw new UnsupportedOperationException("Not yet implemented. 74");
+        document.setStrictErrorChecking(flag);
     }
 
 
@@ -1172,7 +1218,7 @@ public class SOAPPart extends javax.xml.soap.SOAPPart implements Part
     public  Node adoptNode(Node node)
     throws DOMException
     {
-        throw new UnsupportedOperationException("Not yet implemented.77");
+        return document.adoptNode(node);
     }
 
     /**
@@ -1276,9 +1322,56 @@ public class SOAPPart extends javax.xml.soap.SOAPPart implements Part
     public boolean hasAttributes(){
         return document.hasAttributes();
     }
+
+    public String getBaseURI() {
+        return document.getBaseURI();
+    }
+
+    public short compareDocumentPosition(Node other) throws DOMException {
+        return document.compareDocumentPosition(other);
+    }
+
+    public String getTextContent() throws DOMException {
+        return document.getTextContent();
+    }
+
+    public void setTextContent(String textContent) throws DOMException {
+        document.setTextContent(textContent);
+    }
+
+    public boolean isSameNode(Node other) {
+        return document.isSameNode(other);
+    }
+
+    public String lookupPrefix(String namespaceURI) {
+        return document.lookupPrefix(namespaceURI);
+    }
+
+    public boolean isDefaultNamespace(String namespaceURI) {
+        return document.isDefaultNamespace(namespaceURI);
+    }
+
+    public String lookupNamespaceURI(String prefix) {
+        return document.lookupNamespaceURI(prefix);
+    }
+
+    public boolean isEqualNode(Node arg) {
+        return document.isEqualNode(arg);
+    }
+
+    public Object getFeature(String feature, String version) {
+        return document.getFeature(feature, version);
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        return document.setUserData(key, data, handler);
+    }
+
+    public Object getUserData(String key) {
+        return document.getUserData(key);
+    }
     
     public boolean isBodyStream() {
         return (currentForm == SOAPPart.FORM_INPUTSTREAM || currentForm == SOAPPart.FORM_BODYINSTREAM);        
     }
 }
-
