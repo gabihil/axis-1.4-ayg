@@ -18,8 +18,21 @@ It works with JDK17 and includes a wsdl2java helper script you can run from the 
 
 Notes: you must remove jws references from service-config.wsdd . 
 
+# Local development (install to ~/.m2)
+
+To build and install all modules into your local Maven repository:
+
+```
+mvn install
+```
+
+To build a specific module and its dependencies:
+
+```
+mvn -pl :axis-codegen -am install
+```
+
 
 # Original Repository
 
 [Link to the original apache sources at github](https://github.com/apache/axis-axis1-java)
-
