@@ -24,22 +24,7 @@ To make it work you must run IN ORDER these commands :
 
 ```
 
-
-Notes: you must remove jws references from service-config.wsdd . 
-
-# Local development (install to ~/.m2)
-
-To build and install all modules into your local Maven repository:
-
-```
-mvn install
-```
-
-To build a specific module and its dependencies:
-
-```
-mvn -pl :axis-codegen -am install
-```
+Note: you must remove jws references from service-config.wsdd . 
 
 
 # Original Repository
