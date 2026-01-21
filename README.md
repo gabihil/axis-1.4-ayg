@@ -15,6 +15,15 @@ It works with JDK17 and includes a wsdl2java helper script you can run from the 
 ```
 ./bin/wsdl2java <WSDL-URI> [options]
 ```
+To make it work you must run IN ORDER these commands : 
+```
+ ## install required packages to .m2:
+ mvn -pl axis-jaxrpc -am -DskipTests install
+ mvn -pl axis-model  -am -DskipTests install
+ mvn -pl axis-tools -am -DskipTests install
+
+```
+
 
 Notes: you must remove jws references from service-config.wsdd . 
 
