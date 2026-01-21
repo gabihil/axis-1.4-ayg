@@ -49,7 +49,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
-import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXSource;
@@ -80,6 +79,8 @@ public class XMLUtils {
     public static final String httpAuthCharEncoding = "ISO-8859-1";
     private static final String saxParserFactoryProperty =
         "javax.xml.parsers.SAXParserFactory";
+    private static final String SECURE_PROCESSING_FEATURE =
+        "http://javax.xml.XMLConstants/feature/secure-processing";
 
     private static DocumentBuilderFactory dbf = getDOMFactory();
     private static SAXParserFactory       saxFactory;
@@ -330,7 +331,7 @@ public class XMLUtils {
 
     private static void applySecureDomSettings(DocumentBuilderFactory dbf) {
         try {
-            dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            dbf.setFeature(SECURE_PROCESSING_FEATURE, true);
         } catch (Throwable t) {
             log.debug("Failed to enable secure processing on DocumentBuilderFactory", t);
         }
@@ -358,7 +359,7 @@ public class XMLUtils {
 
     private static void applySecureSaxSettings(SAXParserFactory factory) {
         try {
-            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            factory.setFeature(SECURE_PROCESSING_FEATURE, true);
         } catch (Throwable t) {
             log.debug("Failed to enable secure processing on SAXParserFactory", t);
         }
