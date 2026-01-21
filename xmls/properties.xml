@@ -29,8 +29,8 @@
 <!-- what gets pulled in to the binaries: everything -->
 <property name="debuglevel" value="lines,vars,source" />
 <property name="deprecation" value="true" />
-<property name="source" value="1.3" />
-<property name="target" value="1.3" />
+<property name="source" value="8" />
+<property name="target" value="8" />
 
 <!-- directories -->
 <property name="src.dir" location="${axis.home}/src"/>
