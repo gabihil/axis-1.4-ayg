@@ -43,7 +43,6 @@ public final class StandaloneAxisServer {
     private int port;
     private File workDir;
     private int maxSessions = -1;
-    private File[] jwsDirs;
     
     private Server server;
     private QuitListener quitListener;
@@ -72,14 +71,6 @@ public final class StandaloneAxisServer {
         this.maxSessions = maxSessions;
     }
 
-    public File[] getJwsDirs() {
-        return jwsDirs == null ? null : (File[])jwsDirs.clone();
-    }
-
-    public void setJwsDirs(File[] jwsDirs) {
-        this.jwsDirs = jwsDirs == null ? null : (File[])jwsDirs.clone();
-    }
-
     public void init() throws ServerException {
         StandaloneAxisServlet servlet = new StandaloneAxisServlet();
         
@@ -91,16 +82,6 @@ public final class StandaloneAxisServer {
             resources.add(Resource.newResource(workDir.getAbsolutePath()));
         } catch (IOException ex) {
             throw new ServerException(ex);
-        }
-        
-        if (jwsDirs != null) {
-            for (int i=0; i<jwsDirs.length; i++) {
-                try {
-                    resources.add(Resource.newResource(jwsDirs[i].getAbsolutePath()));
-                } catch (IOException ex) {
-                    throw new ServerException(ex);
-                }
-            }
         }
         
         server = new Server(port);
@@ -130,12 +111,6 @@ public final class StandaloneAxisServer {
             ServletMapping mapping = new ServletMapping();
             mapping.setServletName("AxisServlet");
             mapping.setPathSpec("/servlet/AxisServlet");
-            servletHandler.addServletMapping(mapping);
-        }
-        if (jwsDirs != null && jwsDirs.length > 0) {
-            ServletMapping mapping = new ServletMapping();
-            mapping.setServletName("AxisServlet");
-            mapping.setPathSpec("*.jws");
             servletHandler.addServletMapping(mapping);
         }
     }

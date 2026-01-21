@@ -77,13 +77,8 @@ public class JWSHandler extends BasicHandler
         if (log.isDebugEnabled()) {
             log.debug("Enter: JWSHandler::invoke");
         }
-
-        try {
-            setupService(msgContext);
-        } catch (Exception e) {
-            log.error( Messages.getMessage("exception00"), e );
-            throw AxisFault.makeFault(e);
-        }
+        log.warn("JWS support is disabled.");
+        throw new AxisFault("JWS support is disabled.");
     }
     
     /**

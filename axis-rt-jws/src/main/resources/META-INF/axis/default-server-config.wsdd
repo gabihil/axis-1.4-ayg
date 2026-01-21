@@ -21,16 +21,7 @@
             xmlns="http://xml.apache.org/axis/wsdd/"
             xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 
- <globalConfiguration>
-   <requestFlow>
-     <handler type="java:org.apache.axis.handlers.JWSHandler">
-        <parameter name="scope" value="session"/>
-     </handler>
-     <handler type="java:org.apache.axis.handlers.JWSHandler">
-        <parameter name="scope" value="request"/>
-        <parameter name="extension" value=".jwr"/>
-     </handler>
-   </requestFlow>
- </globalConfiguration>
+ <!-- JWS support is disabled in this distribution. -->
+ <globalConfiguration/>
 
 </deployment>

@@ -33,7 +33,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.DirectoryScanner;
 import org.codehaus.plexus.util.FileUtils;
-import org.codehaus.plexus.util.StringUtils;
 import org.xml.sax.InputSource;
 
 /**
@@ -67,7 +66,7 @@ public class StartServerMojo extends AbstractStartWebServerMojo {
     private FileSet[] wsdds;
     
     /**
-     * A set of directories to look up JWS files from.
+     * A set of directories to look up JWS files from (unsupported; JWS is disabled).
      * 
      * @parameter
      */
@@ -82,11 +81,11 @@ public class StartServerMojo extends AbstractStartWebServerMojo {
     private FileSet[] configs;
     
     protected void doStartDaemon(int port) throws MojoExecutionException, MojoFailureException {
+        if (jwsDirs != null && jwsDirs.length > 0) {
+            throw new MojoFailureException("JWS support is disabled.");
+        }
         // Need to setup additional dependencies before building the default configuration!
         addAxisDependency("axis-standalone-server");
-        if (jwsDirs != null && jwsDirs.length > 0) {
-            addAxisDependency("axis-rt-jws");
-        }
         
         // Prepare a work directory where we can place the server-config.wsdd file
         File workDir = new File(workDirBase, String.valueOf(port));
@@ -164,10 +163,6 @@ public class StartServerMojo extends AbstractStartWebServerMojo {
         args.add(String.valueOf(port));
         args.add("-w");
         args.add(workDir.getAbsolutePath());
-        if (jwsDirs != null && jwsDirs.length > 0) {
-            args.add("-j");
-            args.add(StringUtils.join(jwsDirs, File.pathSeparator));
-        }
         args.add("-m");
         args.add(String.valueOf(maxSessions));
         try {
