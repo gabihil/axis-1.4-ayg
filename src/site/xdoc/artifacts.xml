@@ -86,7 +86,7 @@
                     </tr>
                     <tr>
                         <td>JWS Support</td>
-                        <td style="text-align: center"><a href="jws/dependencies.html">axis-rt-jws</a></td>
+                        <td style="text-align: center">Removed</td>
                     </tr>
                     <tr>
                         <td>JMX Support</td>
