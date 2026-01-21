@@ -17,8 +17,8 @@ package org.apache.axis.attachments;
 
 import java.net.URL;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
 
 /**
  * To be used with writing out DIME Attachments.

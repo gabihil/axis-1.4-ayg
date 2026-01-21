@@ -90,14 +90,14 @@ public class MimeUtils {
         try {
             headerLength = getHeaderLength(bp);
 
-            javax.activation.DataHandler dh = bp.getDataHandler();
-            javax.activation.DataSource ds = dh.getDataSource();
+            jakarta.activation.DataHandler dh = bp.getDataHandler();
+            jakarta.activation.DataSource ds = dh.getDataSource();
 
             // Do files our selfs since this is costly to read in. Ask the file system.
             // This is 90% of the use of attachments.
-            if (ds instanceof javax.activation.FileDataSource) {
-                javax.activation.FileDataSource fdh =
-                        (javax.activation.FileDataSource) ds;
+            if (ds instanceof jakarta.activation.FileDataSource) {
+                jakarta.activation.FileDataSource fdh =
+                        (jakarta.activation.FileDataSource) ds;
                 java.io.File df = fdh.getFile();
 
                 if (!df.exists()) {
@@ -274,7 +274,7 @@ public class MimeUtils {
             for (java.util.Iterator it = parts.iterator(); it.hasNext();) {
                 org.apache.axis.Part part =
                         (org.apache.axis.Part) it.next();
-                javax.activation.DataHandler dh =
+                jakarta.activation.DataHandler dh =
                         org.apache.axis.attachments.AttachmentUtils.getActivationDataHandler(
                                 part);
                 String contentID = part.getContentId();

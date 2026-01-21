@@ -30,7 +30,7 @@ import java.io.BufferedInputStream;
  *
  * @author Rick Rineholt
  */
-public class ManagedMemoryDataSource implements javax.activation.DataSource {
+public class ManagedMemoryDataSource implements jakarta.activation.DataSource {
 
     /** Field log           */
     protected static Log log =
@@ -154,7 +154,7 @@ public class ManagedMemoryDataSource implements javax.activation.DataSource {
         }
     }
 
-    /* javax.activation.Interface DataSource implementation */
+    /* jakarta.activation.Interface DataSource implementation */
 
     /**
      * This method returns the MIME type of the data in the form of a string.
@@ -864,8 +864,8 @@ public class ManagedMemoryDataSource implements javax.activation.DataSource {
                     new java.io.FileInputStream(readFile);
             ManagedMemoryDataSource ms =
                     new ManagedMemoryDataSource(ss, 1024 * 1024, "foo/data", true);
-            javax.activation.DataHandler dh =
-                    new javax.activation.DataHandler(ms);
+            jakarta.activation.DataHandler dh =
+                    new jakarta.activation.DataHandler(ms);
             java.io.InputStream is = dh.getInputStream();
             java.io.FileOutputStream fo =
                     new java.io.FileOutputStream(writeFile);

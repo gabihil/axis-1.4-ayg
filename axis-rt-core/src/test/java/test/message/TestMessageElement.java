@@ -283,7 +283,7 @@ public class TestMessageElement extends AxisTestBase {
                 "      </operation>\n" +
                 "\n" +
                 " <typeMapping deserializer=\"org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory\"\n" +
-                "   languageSpecificType=\"java:javax.activation.DataHandler\" qname=\"ns1:DataHandler\"\n" +
+                "   languageSpecificType=\"java:jakarta.activation.DataHandler\" qname=\"ns1:DataHandler\"\n" +
                 "    serializer=\"org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory\"\n" +
                 "    encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"\n" +
                 "     />\n" +

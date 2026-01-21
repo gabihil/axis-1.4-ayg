@@ -23,7 +23,7 @@ import org.apache.axis.utils.Messages;
 import org.apache.commons.logging.Log;
 import org.xml.sax.Attributes;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;

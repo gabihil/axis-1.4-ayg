@@ -25,8 +25,8 @@ import org.apache.axis.components.logger.LogFactory;
 import org.apache.axis.utils.Messages;
 import org.apache.commons.logging.Log;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -262,15 +262,15 @@ public class AttachmentsImpl implements Attachments {
 
         mergeinAttachments();
 
-        if (!(datahandler instanceof javax.activation.DataHandler)) {
+        if (!(datahandler instanceof jakarta.activation.DataHandler)) {
             throw new org.apache.axis.AxisFault(
                     Messages.getMessage(
                             "unsupportedAttach", datahandler.getClass().getName(),
-                            javax.activation.DataHandler.class.getName()));
+                            jakarta.activation.DataHandler.class.getName()));
         }
 
         Part ret =
-                new AttachmentPart((javax.activation.DataHandler) datahandler);
+                new AttachmentPart((jakarta.activation.DataHandler) datahandler);
 
         addAttachmentPart(ret);
 

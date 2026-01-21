@@ -326,7 +326,7 @@ public class DefaultTypeMappingImpl extends TypeMappingImpl {
                     new JAFDataHandlerDeserializerFactory(
                             OctetStream.class,
                             Constants.MIME_OCTETSTREAM));
-            myRegister(Constants.MIME_DATA_HANDLER, javax.activation.DataHandler.class,
+            myRegister(Constants.MIME_DATA_HANDLER, jakarta.activation.DataHandler.class,
                     new JAFDataHandlerSerializerFactory(),
                     new JAFDataHandlerDeserializerFactory());
         }

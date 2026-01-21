@@ -12,7 +12,7 @@ import org.apache.axis.MessageContext;
 import org.apache.axis.attachments.AttachmentPart;
 import org.apache.axis.attachments.Attachments;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.mail.internet.MimeBodyPart;
 import java.util.Iterator;
 

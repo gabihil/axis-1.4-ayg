@@ -22,7 +22,7 @@ import org.apache.axis.components.logger.LogFactory;
 import org.apache.axis.types.HexBinary;
 import org.apache.commons.logging.Log;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.imageio.ImageIO;
 import javax.xml.soap.SOAPException;
 import javax.xml.transform.Source;
@@ -621,7 +621,7 @@ public class JavaUtils
 
         // If it's a MIME type mapping and we want a DataHandler,
         // then we're good.
-        if (dest.getName().equals("javax.activation.DataHandler")) {
+        if (dest.getName().equals("jakarta.activation.DataHandler")) {
             String name = src.getName();
             if (src == String.class
                     || src == java.awt.Image.class
@@ -631,14 +631,14 @@ public class JavaUtils
                 return true;
         }
 
-        if (src.getName().equals("javax.activation.DataHandler")) {
+        if (src.getName().equals("jakarta.activation.DataHandler")) {
             if (dest ==  byte[].class)
                 return true;
             if (dest.isArray() && dest.getComponentType() == byte[].class)
                 return true;
         }
 
-        if (dest.getName().equals("javax.activation.DataHandler")) {
+        if (dest.getName().equals("jakarta.activation.DataHandler")) {
             if (src ==  Object[].class)
                 return true;
             if (src.isArray() && src.getComponentType() == Object[].class)
@@ -1269,7 +1269,7 @@ public class JavaUtils
             return "javax.mail.internet.MimeMultipart";
         }
         else {
-            return "javax.activation.DataHandler";
+            return "jakarta.activation.DataHandler";
         }
     } // mimeToJava
 
@@ -1279,7 +1279,7 @@ public class JavaUtils
 
     /**
      * Determine whether attachments are supported by checking if the following
-     * classes are available:  javax.activation.DataHandler,
+     * classes are available:  jakarta.activation.DataHandler,
      * javax.mail.internet.MimeMultipart.
      */
     public static synchronized boolean isAttachmentSupported() {
@@ -1291,7 +1291,7 @@ public class JavaUtils
                 // Attempt to resolve DataHandler and MimeMultipart and
                 // javax.xml.transform.Source, all necessary for full
                 // attachment support
-                ClassUtils.forName("javax.activation.DataHandler");
+                ClassUtils.forName("jakarta.activation.DataHandler");
                 ClassUtils.forName("javax.mail.internet.MimeMultipart");
                 attachmentSupportEnabled = true;
             } catch (Throwable t) {

@@ -22,7 +22,7 @@ import org.apache.axis.utils.Messages;
 import org.apache.axis.utils.IOUtils;
 import org.apache.commons.logging.Log;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.mail.internet.MimeUtility;
 import java.io.IOException;
 import java.io.BufferedInputStream;
@@ -271,8 +271,8 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
 
                 if ((rootPartContentId != null) && !rootPartContentId.equals(
                         contentId)) {    // This is a part that has come in prior to the root part. Need to buffer it up.
-                    javax.activation.DataHandler dh =
-                            new javax.activation.DataHandler(
+                    jakarta.activation.DataHandler dh =
+                            new jakarta.activation.DataHandler(
                                     new org.apache.axis.attachments.ManagedMemoryDataSource(
                                             decodedStream, MAX_CACHED, contentType, true));
                     AttachmentPart ap = new AttachmentPart(dh);

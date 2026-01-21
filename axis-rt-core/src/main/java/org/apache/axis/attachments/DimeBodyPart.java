@@ -25,8 +25,8 @@ import org.apache.axis.components.logger.LogFactory;
 import org.apache.axis.utils.Messages;
 import org.apache.commons.logging.Log;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -524,9 +524,9 @@ public class DimeBodyPart {
 
             //Do files our selfs since this is costly to read in. Ask the file system.
             // This is 90% of the use of attachments.
-            if (ds instanceof javax.activation.FileDataSource) {
-                javax.activation.FileDataSource fdh =
-                    (javax.activation.FileDataSource) ds;
+            if (ds instanceof jakarta.activation.FileDataSource) {
+                jakarta.activation.FileDataSource fdh =
+                    (jakarta.activation.FileDataSource) ds;
                 java.io.File df = fdh.getFile();
 
                 if (!df.exists()) {

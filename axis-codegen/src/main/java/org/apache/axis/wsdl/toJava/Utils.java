@@ -201,7 +201,7 @@ public class Utils extends org.apache.axis.wsdl.symbolTable.Utils {
             return "javax.xml.rpc.holders.CalendarHolder";
         } else if (typeValue.equals("javax.xml.namespace.QName")) {
             return "javax.xml.rpc.holders.QNameHolder";
-        } else if (typeValue.equals("javax.activation.DataHandler")) {
+        } else if (typeValue.equals("jakarta.activation.DataHandler")) {
             return "org.apache.axis.holders.DataHandlerHolder";
         }
 
@@ -688,7 +688,7 @@ public class Utils extends org.apache.axis.wsdl.symbolTable.Utils {
                 return "(org.apache.axis.attachments.OctetStream"
                         + mimeDimensions + ") " + var + ";";
             } else {
-                return "(javax.activation.DataHandler" + mimeDimensions + ") "
+                return "(jakarta.activation.DataHandler" + mimeDimensions + ") "
                         + var + ";";
             }
         }

@@ -22,7 +22,7 @@ import org.apache.axis.encoding.SerializationContext;
 import org.apache.commons.logging.Log;
 import org.xml.sax.Attributes;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.xml.namespace.QName;
 import java.awt.*;
 import java.io.IOException;

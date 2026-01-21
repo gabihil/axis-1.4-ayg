@@ -208,7 +208,7 @@ public class JavaDeployWriter extends JavaWriter {
 
             TypeMapping typeMapping = WSDDFactory.INSTANCE.createTypeMapping();
             typeMapping.setQname(new QName(bQName.getNamespaceURI(), "DataHandler"));
-            typeMapping.setType(new QName(WSDDConstants.URI_WSDD_JAVA, "javax.activation.DataHandler", WSDDConstants.NS_PREFIX_WSDD_JAVA));
+            typeMapping.setType(new QName(WSDDConstants.URI_WSDD_JAVA, "jakarta.activation.DataHandler", WSDDConstants.NS_PREFIX_WSDD_JAVA));
             typeMapping.setSerializer("org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory");
             typeMapping.setDeserializer("org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory");
             typeMapping.setEncodingStyle(use.getEncoding());

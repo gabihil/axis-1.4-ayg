@@ -70,7 +70,7 @@ public class FunctionalTests extends TestCase
 
         // Attachments service test.
         try{
-          if( null != ClassUtils.forName("javax.activation.DataHandler") &&
+          if( null != ClassUtils.forName("jakarta.activation.DataHandler") &&
               null != ClassUtils.forName("javax.mail.internet.MimeMultipart")){
                 suite.addTestSuite( ClassUtils.forName("test.functional.TestAttachmentsSample"));
           }

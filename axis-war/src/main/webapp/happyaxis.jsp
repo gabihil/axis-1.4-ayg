@@ -370,7 +370,7 @@
             getMessage("criticalErrorMessage"),
             "http://xml.apache.org/xerces-j/");
 
-    needed+=needClass(out,"javax.activation.DataHandler",
+    needed+=needClass(out,"jakarta.activation.DataHandler",
             "activation.jar",
             "Activation API",
             getMessage("criticalErrorMessage"),

@@ -1,6 +1,6 @@
 package samples.mtomstub.service;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.jws.WebService;
 import javax.mail.util.ByteArrayDataSource;
 

@@ -15,7 +15,7 @@
  */
 package javax.xml.soap;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import java.util.Iterator;
 
 /**
