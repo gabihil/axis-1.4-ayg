@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
+tmp_classpath="$(mktemp)"
+cleanup() {
+  rm -f "$tmp_classpath"
+}
+trap cleanup EXIT
+
+mvn -q -pl axis-tools -am -DskipTests compile
+mvn -q -pl axis-tools -am -DskipTests \
+  dependency:build-classpath \
+  -Dmdep.outputFile="$tmp_classpath" \
+  -Dmdep.pathSeparator=":"
+
+classpath="$(cat "$tmp_classpath"):$ROOT_DIR/axis-tools/target/classes"
+
+exec java -cp "$classpath" org.apache.axis.wsdl.WSDL2Java "$@"
