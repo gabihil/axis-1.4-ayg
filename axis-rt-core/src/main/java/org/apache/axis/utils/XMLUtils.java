@@ -49,6 +49,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
+import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXSource;
@@ -210,6 +211,7 @@ public class XMLUtils {
         }
         saxFactory.setNamespaceAware(namespaceAware);
         saxFactory.setValidating(validating);
+        applySecureSaxSettings(saxFactory);
 
         // Discard existing parsers
         saxParsers.clear();
@@ -220,6 +222,7 @@ public class XMLUtils {
         try {
             dbf = DocumentBuilderFactory.newInstance();
             dbf.setNamespaceAware(true);
+            applySecureDomSettings(dbf);
         }
         catch( Exception e ) {
             log.error(Messages.getMessage("exception00"), e );
@@ -322,6 +325,62 @@ public class XMLUtils {
             }
         } catch (org.xml.sax.SAXException e) {
             tryReset= false;
+        }
+    }
+
+    private static void applySecureDomSettings(DocumentBuilderFactory dbf) {
+        try {
+            dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        } catch (Throwable t) {
+            log.debug("Failed to enable secure processing on DocumentBuilderFactory", t);
+        }
+        try {
+            dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        } catch (Throwable t) {
+            log.debug("Failed to disallow DOCTYPE declarations on DocumentBuilderFactory", t);
+        }
+        try {
+            dbf.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        } catch (Throwable t) {
+            log.debug("Failed to disable external general entities on DocumentBuilderFactory", t);
+        }
+        try {
+            dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+        } catch (Throwable t) {
+            log.debug("Failed to disable external parameter entities on DocumentBuilderFactory", t);
+        }
+        try {
+            dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+        } catch (Throwable t) {
+            log.debug("Failed to disable external DTD loading on DocumentBuilderFactory", t);
+        }
+    }
+
+    private static void applySecureSaxSettings(SAXParserFactory factory) {
+        try {
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        } catch (Throwable t) {
+            log.debug("Failed to enable secure processing on SAXParserFactory", t);
+        }
+        try {
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        } catch (Throwable t) {
+            log.debug("Failed to disallow DOCTYPE declarations on SAXParserFactory", t);
+        }
+        try {
+            factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        } catch (Throwable t) {
+            log.debug("Failed to disable external general entities on SAXParserFactory", t);
+        }
+        try {
+            factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+        } catch (Throwable t) {
+            log.debug("Failed to disable external parameter entities on SAXParserFactory", t);
+        }
+        try {
+            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+        } catch (Throwable t) {
+            log.debug("Failed to disable external DTD loading on SAXParserFactory", t);
         }
     }
     /**
