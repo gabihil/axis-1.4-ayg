@@ -66,7 +66,6 @@ import org.w3c.dom.Element;
  *
  * @web.servlet name="AxisServlet"  display-name="Apache-Axis Servlet"
  * @web.servlet-mapping url-pattern="/servlet/AxisServlet"
- * @web.servlet-mapping url-pattern="*.jws"
  * @web.servlet-mapping url-pattern="/services/*"
   */
 public class AxisServlet extends AxisServletBase {
@@ -212,6 +211,10 @@ public class AxisServlet extends AxisServletBase {
         if (isDebug) {
             log.debug("Enter: doGet()");
 
+        }
+        if (isJwsRequest(request)) {
+            rejectJwsRequest(response);
+            return;
         }
         PrintWriter writer = new FilterPrintWriter(response);
 
@@ -388,6 +391,19 @@ public class AxisServlet extends AxisServletBase {
      */
     protected void logException(Throwable e) {
         exceptionLog.info(Messages.getMessage("exception00"), e);
+    }
+
+    private boolean isJwsRequest(HttpServletRequest request) {
+        String requestUri = request.getRequestURI();
+        return requestUri != null
+                && (requestUri.endsWith(Constants.JWS_DEFAULT_FILE_EXTENSION)
+                || requestUri.endsWith(".jwr"));
+    }
+
+    private void rejectJwsRequest(HttpServletResponse response) throws IOException {
+        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        response.setContentType("text/plain; charset=utf-8");
+        response.getWriter().println("JWS support is disabled.");
     }
 
     /**
@@ -578,6 +594,10 @@ public class AxisServlet extends AxisServletBase {
         MessageContext msgContext = null;
         if (isDebug) {
             log.debug("Enter: doPost()");
+        }
+        if (isJwsRequest(req)) {
+            rejectJwsRequest(res);
+            return;
         }
         if (tlog.isDebugEnabled()) {
             t0 = System.currentTimeMillis();

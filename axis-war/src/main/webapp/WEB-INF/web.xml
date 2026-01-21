@@ -51,11 +51,6 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 
   <servlet-mapping>
     <servlet-name>AxisServlet</servlet-name>
-    <url-pattern>*.jws</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>AxisServlet</servlet-name>
     <url-pattern>/services/*</url-pattern>
   </servlet-mapping>
 
@@ -94,7 +89,6 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
   <welcome-file-list id="WelcomeFileList">
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jws</welcome-file>
   </welcome-file-list>
 
 </web-app>

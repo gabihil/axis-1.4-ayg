@@ -53,12 +53,6 @@ public final class Configurator {
         }
         
         {
-            Option option = new Option("j", true, "a list of directories to look up JWS files from");
-            option.setArgName("dirs");
-            options.addOption(option);
-        }
-        
-        {
             Option option = new Option("m", true, "the maximum number of concurrently active sessions");
             option.setArgName("count");
             options.addOption(option);
@@ -85,14 +79,6 @@ public final class Configurator {
         server.setWorkDir(new File(cmdLine.getOptionValue("w")));
         if (cmdLine.hasOption("m")) {
             server.setMaxSessions(Integer.parseInt(cmdLine.getOptionValue("m")));
-        }
-        if (cmdLine.hasOption("j")) {
-            String[] jwsDirStrings = cmdLine.getOptionValue("j").split(File.pathSeparator);
-            File[] jwsDirs = new File[jwsDirStrings.length];
-            for (int i=0; i<jwsDirStrings.length; i++) {
-                jwsDirs[i] = new File(jwsDirStrings[i]);
-            }
-            server.setJwsDirs(jwsDirs);
         }
     }
 }

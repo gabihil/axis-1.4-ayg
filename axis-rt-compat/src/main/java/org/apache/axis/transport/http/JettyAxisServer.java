@@ -63,8 +63,6 @@ public class JettyAxisServer {
                 "org.apache.axis.transport.http.AxisServlet");
         servlets.addServlet("AxisServlet", "/services/*",
                 "org.apache.axis.transport.http.AxisServlet");
-        servlets.addServlet("AxisServlet", "*.jws",
-                "org.apache.axis.transport.http.AxisServlet");
         context.addHandler(new ResourceHandler());
     }
 
