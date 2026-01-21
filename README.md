@@ -1,49 +1,89 @@
 # Axis (Apache eXtensible Interaction System)
 
-Welcome to Axis!  You'll find documentation in the docs/ directory.
+Welcome to Axis! You'll find documentation in the docs/ directory.
 
-# License
+---
+
+## License
 
 Axis is licensed under the Apache License 2.0. See the files called LICENSE and NOTICE for more information.
 
-# About this repo
+---
 
-This repository is a fork of Axis 1.4 with the latest svn changes and security fixes.
+## About This Repository
 
-It provides LIMITED functionality, core modules (client, server and wsdl2java). It works with JDK17 and includes a wsdl2java helper script you can run from the repo root:
+This repository is a maintained fork of **Apache Axis 1.4**, based on the final SVN-era sources, with additional **security patches and compatibility fixes**.
 
-```
+The fork provides **limited functionality**, focusing on the core modules only:
+- client
+- server
+- wsdl2java
+
+It has been adapted to **compile and run on JDK 17**.
+
+A helper script for `wsdl2java` is included and can be executed from the repository root:
+
+```bash
 ./bin/wsdl2java <WSDL-URI> [options]
 ```
-To make it work you must run IN ORDER these commands : 
+
+---
+
+## Build Instructions
+
+To use `wsdl2java`, the required modules must first be installed into your **local Maven repository (`~/.m2`)**.
+
+Run the following commands **in order**:
+
+```bash
+mvn -pl axis-jaxrpc -am -DskipTests install
+mvn -pl axis-model  -am -DskipTests install
+mvn -pl axis-tools  -am -DskipTests install
 ```
- ## install required packages to .m2:
- mvn -pl axis-jaxrpc -am -DskipTests install
- mvn -pl axis-model  -am -DskipTests install
- mvn -pl axis-tools -am -DskipTests install
 
-```
+Although `-am` (also-make) is used, this order avoids dependency resolution issues when working with snapshot artifacts.
 
-Note: you must remove jws references from service-config.wsdd . 
+---
 
-## Security fixes
+## Configuration Notes
 
+- Remove any **JWS references** from `service-config.wsdd`
+- JWS-based deployment is **not supported** in this fork
 
-1.4-ayg-01
-* [CVE-2007-2353](https://nvd.nist.gov/vuln/detail/CVE-2007-2353)
-* [CVE-2012-5784](https://nvd.nist.gov/vuln/detail/CVE-2012-5784)
-* [CVE-2014-3596](https://nvd.nist.gov/vuln/detail/CVE-2014-3596)
+---
 
-1.4-ayg-02
-* [CVE-2018-8032](https://nvd.nist.gov/vuln/detail/CVE-2018-8032)
+## Not Included
 
-1.4-ayg-03
-* [CVE-2019-0227](https://nvd.nist.gov/vuln/detail/CVE-2019-0227)
+The following Axis 1.4 components are intentionally excluded:
+- JWS-based services
+- Axis admin web application
+- Legacy samples and optional extras
 
-1.4-ayg-04
-* [CVE-2023-40743](https://nvd.nist.gov/vuln/detail/CVE-2023-40743)
+---
 
+## Security Fixes
 
-# Original Repository
+This fork tracks security and compatibility updates. 
 
-[Link to the original apache sources at github](https://github.com/apache/axis-axis1-java)
+The following CVEs are addressed through patches or configuration hardening:
+
+### 1.4-ayg-01
+- CVE-2007-2353  
+- CVE-2012-5784  
+- CVE-2014-3596  
+
+### 1.4-ayg-02
+- CVE-2018-8032  
+
+### 1.4-ayg-03
+- CVE-2019-0227  
+
+### 1.4-ayg-04
+- CVE-2023-40743  
+
+---
+
+## Original Repository
+
+Original Apache Axis 1.x sources:  
+https://github.com/apache/axis-axis1-java
