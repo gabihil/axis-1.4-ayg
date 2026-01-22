@@ -16,7 +16,7 @@
 package org.apache.axis.attachments;
 
 import jakarta.activation.DataSource;
-import javax.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeMultipart;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

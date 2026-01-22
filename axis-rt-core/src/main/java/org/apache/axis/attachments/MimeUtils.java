@@ -44,25 +44,25 @@ public class MimeUtils {
      * @param mp is the multipart to be serarched.
      * @return the actual length.
      *
-     * @throws javax.mail.MessagingException
+     * @throws jakarta.mail.MessagingException
      * @throws java.io.IOException
      */
-    public static long getContentLength(javax.mail.Multipart mp)
-            throws javax.mail.MessagingException, java.io.IOException {
+    public static long getContentLength(jakarta.mail.Multipart mp)
+            throws jakarta.mail.MessagingException, java.io.IOException {
 
         int totalParts = mp.getCount();
         long totalContentLength = 0;
 
         for (int i = 0; i < totalParts; ++i) {
-            javax.mail.internet.MimeBodyPart bp =
-                    (javax.mail.internet.MimeBodyPart) mp.getBodyPart(i);
+            jakarta.mail.internet.MimeBodyPart bp =
+                    (jakarta.mail.internet.MimeBodyPart) mp.getBodyPart(i);
 
             totalContentLength += getContentLength(bp);
         }
 
         String ctype = mp.getContentType();
-        javax.mail.internet.ContentType ct =
-                new javax.mail.internet.ContentType(ctype);
+        jakarta.mail.internet.ContentType ct =
+                new jakarta.mail.internet.ContentType(ctype);
         String boundaryStr =
                 ct.getParameter("boundary");
         int boundaryStrLen =
@@ -82,7 +82,7 @@ public class MimeUtils {
      * @return the length in bytes.
      */
     protected static long getContentLength(
-            javax.mail.internet.MimeBodyPart bp) {
+            jakarta.mail.internet.MimeBodyPart bp) {
 
         long headerLength = -1L;
         long dataSize = -1L;
@@ -139,19 +139,19 @@ public class MimeUtils {
      * @param bp the part to determine the header length for.
      * @return the length in bytes.
      *
-     * @throws javax.mail.MessagingException
+     * @throws jakarta.mail.MessagingException
      * @throws java.io.IOException
      */
-    private static long getHeaderLength(javax.mail.internet.MimeBodyPart bp)
-            throws javax.mail.MessagingException, java.io.IOException {
+    private static long getHeaderLength(jakarta.mail.internet.MimeBodyPart bp)
+            throws jakarta.mail.MessagingException, java.io.IOException {
 
-        javax.mail.internet.MimeBodyPart headersOnly =
-                new javax.mail.internet.MimeBodyPart(
-                        new javax.mail.internet.InternetHeaders(), new byte[0]);
+        jakarta.mail.internet.MimeBodyPart headersOnly =
+                new jakarta.mail.internet.MimeBodyPart(
+                        new jakarta.mail.internet.InternetHeaders(), new byte[0]);
 
         for (java.util.Enumeration en = bp.getAllHeaders();
              en.hasMoreElements();) {
-            javax.mail.Header header = (javax.mail.Header) en.nextElement();
+            jakarta.mail.Header header = (jakarta.mail.Header) en.nextElement();
 
             headersOnly.addHeader(header.getName(), header.getValue());
         }
@@ -176,14 +176,14 @@ public class MimeUtils {
      * This routine will the multi part type and write it out to a stream.
      *
      * <p>Note that is does *NOT* pass <code>AxisProperties</code>
-     * to <code>javax.mail.Session.getInstance</code>, but instead
+     * to <code>jakarta.mail.Session.getInstance</code>, but instead
      * the System properties.
      * </p>
      * @param os is the output stream to write to.
      * @param mp the multipart that needs to be written to the stream.
      */
     public static void writeToMultiPartStream(
-            java.io.OutputStream os, javax.mail.internet.MimeMultipart mp) {
+            java.io.OutputStream os, jakarta.mail.internet.MimeMultipart mp) {
 
         try {
             Properties props = AxisProperties.getProperties();
@@ -192,15 +192,15 @@ public class MimeUtils {
                     "mail.smtp.host",
                     "localhost");    // this is a bogus since we will never mail it.
 
-            javax.mail.Session session =
-                    javax.mail.Session.getInstance(props, null);
-            javax.mail.internet.MimeMessage message =
-                    new javax.mail.internet.MimeMessage(session);
+            jakarta.mail.Session session =
+                    jakarta.mail.Session.getInstance(props, null);
+            jakarta.mail.internet.MimeMessage message =
+                    new jakarta.mail.internet.MimeMessage(session);
 
             message.setContent(mp);
             message.saveChanges();
             message.writeTo(os, filter);
-        } catch (javax.mail.MessagingException e) {
+        } catch (jakarta.mail.MessagingException e) {
             log.error(Messages.getMessage("javaxMailMessagingException00"), e);
         } catch (java.io.IOException e) {
             log.error(Messages.getMessage("javaIOException00"), e);
@@ -213,7 +213,7 @@ public class MimeUtils {
      * @param mp the MimeMultipart
      * @return the content type
      */
-    public static String getContentType(javax.mail.internet.MimeMultipart mp) {
+    public static String getContentType(jakarta.mail.internet.MimeMultipart mp) {
         StringBuffer contentType = new StringBuffer(mp.getContentType());
         // TODO (dims): Commons HttpClient croaks if we don't do this.
         //              Need to get Commons HttpClient fixed.
@@ -236,27 +236,27 @@ public class MimeUtils {
      *
      * @throws org.apache.axis.AxisFault
      */
-    public static javax.mail.internet.MimeMultipart createMP(
+    public static jakarta.mail.internet.MimeMultipart createMP(
             String env,
             java.util.Collection parts,
             int sendType)
             throws org.apache.axis.AxisFault {
 
-        javax.mail.internet.MimeMultipart multipart = null;
+        jakarta.mail.internet.MimeMultipart multipart = null;
 
         try {
             String rootCID = SessionUtils.generateSessionId();
 
             if(sendType == Attachments.SEND_TYPE_MTOM) {
-                multipart = new javax.mail.internet.MimeMultipart(
+                multipart = new jakarta.mail.internet.MimeMultipart(
                         "related;type=\"application/xop+xml\"; start=\"<" + rootCID + ">\"; start-info=\"text/xml\"; charset=\"utf-8\"");
             } else {
-                multipart = new javax.mail.internet.MimeMultipart(
+                multipart = new jakarta.mail.internet.MimeMultipart(
                         "related; type=\"text/xml\"; start=\"<" + rootCID + ">\"");
             }
 
-            javax.mail.internet.MimeBodyPart messageBodyPart =
-                    new javax.mail.internet.MimeBodyPart();
+            jakarta.mail.internet.MimeBodyPart messageBodyPart =
+                    new jakarta.mail.internet.MimeBodyPart();
 
             messageBodyPart.setText(env, "UTF-8");
             if(sendType == Attachments.SEND_TYPE_MTOM){
@@ -279,7 +279,7 @@ public class MimeUtils {
                                 part);
                 String contentID = part.getContentId();
 
-                messageBodyPart = new javax.mail.internet.MimeBodyPart();
+                messageBodyPart = new jakarta.mail.internet.MimeBodyPart();
 
                 messageBodyPart.setDataHandler(dh);
 
@@ -313,10 +313,10 @@ public class MimeUtils {
 
                 multipart.addBodyPart(messageBodyPart);
             }
-        } catch (javax.mail.MessagingException e) {
+        } catch (jakarta.mail.MessagingException e) {
             log.error(Messages.getMessage("javaxMailMessagingException00"), e);
         }
 
         return multipart;
     }
-}
+} // class MimeUtils

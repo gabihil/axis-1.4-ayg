@@ -368,7 +368,7 @@ public class HappyClient {
 
         title("happyClientOptional");
 
-        wanted += wantClass("javax.mail.internet.MimeMessage",
+        wanted += wantClass("jakarta.mail.internet.MimeMessage",
                 "mail.jar",
                 "Mail",
                 "happyClientNoAttachments",

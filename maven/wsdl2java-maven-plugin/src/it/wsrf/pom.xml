@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>@project.groupId@</groupId>
-        <artifactId>axis-project</artifactId>
+        <artifactId>axis</artifactId>
         <version>@project.version@</version>
     </parent>
     <groupId>test</groupId>

@@ -23,7 +23,7 @@ import org.apache.commons.logging.Log;
 import org.xml.sax.Attributes;
 
 import jakarta.activation.DataHandler;
-import javax.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeMultipart;
 import javax.xml.namespace.QName;
 import java.io.IOException;
 

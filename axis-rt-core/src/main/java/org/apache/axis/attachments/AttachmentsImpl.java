@@ -414,7 +414,7 @@ public class AttachmentsImpl implements Attachments {
     }
 
     /** multipart , cached entries for the stream of attachment that are going to be sent.   */
-    javax.mail.internet.MimeMultipart multipart = null;
+    jakarta.mail.internet.MimeMultipart multipart = null;
     DimeMultiPart dimemultipart = null;
 
     /**

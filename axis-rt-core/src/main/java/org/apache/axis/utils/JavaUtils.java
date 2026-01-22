@@ -302,7 +302,7 @@ public class JavaUtils
                         || destClass == Image.class
                         || destClass == Source.class
                         || destClass == DataHandler.class
-                        || destName.equals("javax.mail.internet.MimeMultipart")) {
+                        || destName.equals("jakarta.mail.internet.MimeMultipart")) {
                     DataHandler handler = null;
                     if (arg instanceof AttachmentPart) {
                         handler = ((AttachmentPart) arg).getDataHandler();
@@ -626,7 +626,7 @@ public class JavaUtils
             if (src == String.class
                     || src == java.awt.Image.class
                     || src == OctetStream.class
-                    || name.equals("javax.mail.internet.MimeMultipart")
+                    || name.equals("jakarta.mail.internet.MimeMultipart")
                     || name.equals("javax.xml.transform.Source"))
                 return true;
         }
@@ -1266,7 +1266,7 @@ public class JavaUtils
             return "org.apache.axis.attachments.OctetStream";
         }
         else if (mime != null && mime.startsWith("multipart/")) {
-            return "javax.mail.internet.MimeMultipart";
+            return "jakarta.mail.internet.MimeMultipart";
         }
         else {
             return "jakarta.activation.DataHandler";
@@ -1280,7 +1280,7 @@ public class JavaUtils
     /**
      * Determine whether attachments are supported by checking if the following
      * classes are available:  jakarta.activation.DataHandler,
-     * javax.mail.internet.MimeMultipart.
+     * jakarta.mail.internet.MimeMultipart.
      */
     public static synchronized boolean isAttachmentSupported() {
 
@@ -1292,7 +1292,7 @@ public class JavaUtils
                 // javax.xml.transform.Source, all necessary for full
                 // attachment support
                 ClassUtils.forName("jakarta.activation.DataHandler");
-                ClassUtils.forName("javax.mail.internet.MimeMultipart");
+                ClassUtils.forName("jakarta.mail.internet.MimeMultipart");
                 attachmentSupportEnabled = true;
             } catch (Throwable t) {
             }

@@ -305,12 +305,12 @@ public class DefaultTypeMappingImpl extends TypeMappingImpl {
                     new JAFDataHandlerDeserializerFactory(
                             java.awt.Image.class,
                             Constants.MIME_IMAGE));
-            myRegister(Constants.MIME_MULTIPART, javax.mail.internet.MimeMultipart.class,
+            myRegister(Constants.MIME_MULTIPART, jakarta.mail.internet.MimeMultipart.class,
                     new JAFDataHandlerSerializerFactory(
-                            javax.mail.internet.MimeMultipart.class,
+                            jakarta.mail.internet.MimeMultipart.class,
                             Constants.MIME_MULTIPART),
                     new JAFDataHandlerDeserializerFactory(
-                            javax.mail.internet.MimeMultipart.class,
+                            jakarta.mail.internet.MimeMultipart.class,
                             Constants.MIME_MULTIPART));
             myRegister(Constants.MIME_SOURCE, javax.xml.transform.Source.class,
                     new JAFDataHandlerSerializerFactory(

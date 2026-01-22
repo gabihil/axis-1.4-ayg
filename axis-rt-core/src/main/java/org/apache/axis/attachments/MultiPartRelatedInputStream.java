@@ -23,7 +23,7 @@ import org.apache.axis.utils.IOUtils;
 import org.apache.commons.logging.Log;
 
 import jakarta.activation.DataHandler;
-import javax.mail.internet.MimeUtility;
+import jakarta.mail.internet.MimeUtility;
 import java.io.IOException;
 import java.io.BufferedInputStream;
 
@@ -111,8 +111,8 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
 
             // First find the start and boundary parameters. There are real weird rules regard what
             // can be in real headers what needs to be escaped etc  let mail parse it.
-            javax.mail.internet.ContentType ct =
-                    new javax.mail.internet.ContentType(contentType);
+            jakarta.mail.internet.ContentType ct =
+                    new jakarta.mail.internet.ContentType(contentType);
             String rootPartContentId =
                     ct.getParameter("start");       // Get the root part content.
 
@@ -198,8 +198,8 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
                 contentTransferEncoding = null;
 
                 // Read this attachments headers from the stream.
-                javax.mail.internet.InternetHeaders headers =
-                        new javax.mail.internet.InternetHeaders(
+                jakarta.mail.internet.InternetHeaders headers =
+                        new jakarta.mail.internet.InternetHeaders(
                                 boundaryDelimitedStream);
 
                 // Use java mail utility to read through the headers.
@@ -292,8 +292,8 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
                                 HTTPConstants.HEADER_CONTENT_ID,
                                 HTTPConstants.HEADER_CONTENT_LOCATION,
                                 HTTPConstants.HEADER_CONTENT_TYPE}); en.hasMoreElements();) {
-                        javax.mail.Header header =
-                                (javax.mail.Header) en.nextElement();
+                        jakarta.mail.Header header =
+                                (jakarta.mail.Header) en.nextElement();
                         String name = header.getName();
                         String value = header.getValue();
 
@@ -332,13 +332,13 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
             }
 
             // Read from the input stream all attachments prior to the root part.
-        } catch (javax.mail.internet.ParseException e) {
+        } catch (jakarta.mail.internet.ParseException e) {
             throw new org.apache.axis.AxisFault(
                     Messages.getMessage("mimeErrorParsing", e.getMessage()));
         } catch (java.io.IOException e) {
             throw new org.apache.axis.AxisFault(
                     Messages.getMessage("readError", e.getMessage()));
-        } catch (javax.mail.MessagingException e) {
+        } catch (jakarta.mail.MessagingException e) {
             throw new org.apache.axis.AxisFault(
                     Messages.getMessage("readError", e.getMessage()));
         }
@@ -496,8 +496,8 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
                     String contentLocation = null;
 
                     // Read this attachments headers from the stream.
-                    javax.mail.internet.InternetHeaders headers =
-                            new javax.mail.internet.InternetHeaders(
+                    jakarta.mail.internet.InternetHeaders headers =
+                            new jakarta.mail.internet.InternetHeaders(
                                     boundaryDelimitedStream);
 
                     contentId = headers.getHeader("Content-Id", null);
@@ -574,8 +574,8 @@ public class MultiPartRelatedInputStream extends MultiPartInputStream{
                                 HTTPConstants.HEADER_CONTENT_ID,
                                 HTTPConstants.HEADER_CONTENT_LOCATION,
                                 HTTPConstants.HEADER_CONTENT_TYPE}); en.hasMoreElements();) {
-                        javax.mail.Header header =
-                                (javax.mail.Header) en.nextElement();
+                        jakarta.mail.Header header =
+                                (jakarta.mail.Header) en.nextElement();
                         String name = header.getName();
                         String value = header.getValue();
 
