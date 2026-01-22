@@ -47,11 +47,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>axis-rt-transport-mail</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>axis-codegen</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -84,7 +79,6 @@
                                     <include>${project.groupId}:axis-rt-soapmonitor</include>
                                     <include>${project.groupId}:axis-rt-transport-jms</include>
                                     <include>${project.groupId}:axis-rt-transport-http-hc3</include>
-                                    <include>${project.groupId}:axis-rt-transport-mail</include>
                                     <include>${project.groupId}:axis-model</include>
                                     <include>${project.groupId}:axis-codegen</include>
                                     <include>${project.groupId}:axis-tools</include>

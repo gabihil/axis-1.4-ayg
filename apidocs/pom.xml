@@ -102,11 +102,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>axis-rt-transport-mail</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>axis-saaj</artifactId>
             <version>${project.version}</version>
         </dependency>

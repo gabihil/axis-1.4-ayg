@@ -105,10 +105,6 @@
                         <td style="text-align: center"><a href="transports/http-hc3/dependencies.html">axis-rt-transport-http-hc3</a></td>
                     </tr>
                     <tr>
-                        <td>Mail Transport</td>
-                        <td style="text-align: center"><a href="transports/mail/dependencies.html">axis-rt-transport-mail</a></td>
-                    </tr>
-                    <tr>
                         <td>EMF Models</td>
                         <td style="text-align: center"><a href="model/dependencies.html">axis-model</a></td>
                     </tr>
