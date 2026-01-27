@@ -33,7 +33,7 @@ A helper script for `wsdl2java` is included and can be executed from the reposit
 
 To use `wsdl2java`, the required modules must first be installed into your **local Maven repository (`~/.m2`)**.
 
-Run the following commands **in order**:
+Ensure `JAVA_HOME` points to a **JDK 17** installation, then run the following commands **in order**:
 
 ```bash
 mvn -pl axis-jaxrpc -am -DskipTests install

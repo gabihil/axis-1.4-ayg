@@ -55,6 +55,11 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
   </servlet-mapping>
 
   <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>*.jws</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
     <servlet-name>SOAPMonitorService</servlet-name>
     <url-pattern>/SOAPMonitor</url-pattern>
   </servlet-mapping>

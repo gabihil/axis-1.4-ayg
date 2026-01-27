@@ -35,18 +35,36 @@ public class JwsTest extends HttpUnitTestBase {
         super(name);
     }
 
+    private boolean isJwsHandlerAvailable() {
+        try {
+            Class.forName("org.apache.axis.handlers.JWSHandler");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
+
     public void testStockQuote() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url+"/StockQuoteService.jws?wsdl");
         assertStringInBody(request,"<wsdl:definitions");
     }
 
     public void testEchoHeadersWsdl() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url + "/EchoHeaders.jws?wsdl");
         assertStringInBody(request, "<wsdl:definitions");
     }
 
 
     public void testEchoHeaders() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url + "/EchoHeaders.jws");
         assertStringInBody(request, "Web Service");
     }
@@ -56,6 +74,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testEchoHeadersWhoami() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws");
         request.setParameter("method", "whoami");
@@ -67,6 +88,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testEchoHeadersList() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws");
         request.setHeaderField("x-header","echo-header-test");
@@ -79,6 +103,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testEchoHeadersEcho() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=echo&param=foo+bar");
         assertStringInBody(request, "foo bar");
@@ -89,6 +116,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testMissingJWSRaisesException() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders-not-really-there.jws");
         expectErrorCode(request,404, "No service");
@@ -99,6 +129,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testAxisFaultIsXML() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=throwAxisFault&param=oops!");
         expectErrorCode(request, 500,
@@ -110,6 +143,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testExceptionIsXML() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=throwAxisFault&param=oops!");
         expectErrorCode(request, 500,
@@ -125,6 +161,9 @@ public class JwsTest extends HttpUnitTestBase {
      * @throws Exception
      */
     public void testEchoHeadersEchoUnicode() throws Exception {
+        if (!isJwsHandlerAvailable()) {
+            return;
+        }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=echo&param=" + URLEncoder.encode("\u221a", "UTF-8"));
         // TODO: Axis actually returns a character entity; may be related to AXIS-2342

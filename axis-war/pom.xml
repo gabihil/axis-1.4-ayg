@@ -162,6 +162,7 @@
                     <webAppConfig>
                         <contextPath>/axis</contextPath>
                         <descriptor>${project.build.directory}/web.xml</descriptor>
+                        <resourceBase>${project.build.directory}/${project.build.finalName}</resourceBase>
                     </webAppConfig>
                 </configuration>
                 <executions>
