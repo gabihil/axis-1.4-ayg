@@ -11,7 +11,7 @@
       </operation>
 
  <typeMapping deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory"
-   languageSpecificType="java:javax.activation.DataHandler" qname="ns1:DataHandler"
+   languageSpecificType="java:jakarta.activation.DataHandler" qname="ns1:DataHandler"
     serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory" 
     encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
      />

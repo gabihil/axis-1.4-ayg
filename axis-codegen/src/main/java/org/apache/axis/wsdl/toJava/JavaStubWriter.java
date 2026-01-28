@@ -904,7 +904,7 @@ public class JavaStubWriter extends JavaClassWriter {
                     + qname.getNamespaceURI() + "\", \""
                     + qname.getLocalPart() + "\");");
             pw.println("            cachedSerQNames.add(qName);");
-            pw.println("            cls = javax.activation.DataHandler.class;");
+            pw.println("            cls = jakarta.activation.DataHandler.class;");
             pw.println("            cachedSerClasses.add(cls);");
             pw.println("            cachedSerFactories.add(mimesf);");
             pw.println("            cachedDeserFactories.add(mimedf);");

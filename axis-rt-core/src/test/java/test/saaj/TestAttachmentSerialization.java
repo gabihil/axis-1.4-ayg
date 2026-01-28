@@ -20,7 +20,7 @@ import junit.framework.TestCase;
 import org.apache.axis.components.logger.LogFactory;
 import org.apache.commons.logging.Log;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.xml.soap.AttachmentPart;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;

@@ -15,7 +15,7 @@
  */
 package javax.xml.soap;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Iterator;
@@ -186,7 +186,7 @@ public abstract class SOAPMessage {
      * populates it using the given <CODE>DataHandler</CODE>
      * object.
      * @param   datahandler  the <CODE>
-     *     javax.activation.DataHandler</CODE> object that will
+     *     jakarta.activation.DataHandler</CODE> object that will
      *     generate the content for this <CODE>SOAPMessage</CODE>
      *     object
      * @return a new <CODE>AttachmentPart</CODE> object that
@@ -196,7 +196,7 @@ public abstract class SOAPMessage {
      *     there was a problem with the specified <CODE>
      *     DataHandler</CODE> object
      * @see DataHandler DataHandler
-     * @see javax.activation.DataContentHandler DataContentHandler
+     * @see jakarta.activation.DataContentHandler DataContentHandler
      */
     public AttachmentPart createAttachmentPart(DataHandler datahandler) {
 
@@ -233,7 +233,7 @@ public abstract class SOAPMessage {
      *     DataContentHandler</CODE> object for the given content
      *     object
      * @see DataHandler DataHandler
-     * @see javax.activation.DataContentHandler DataContentHandler
+     * @see jakarta.activation.DataContentHandler DataContentHandler
      */
     public AttachmentPart createAttachmentPart(Object content,
                                                String contentType) {

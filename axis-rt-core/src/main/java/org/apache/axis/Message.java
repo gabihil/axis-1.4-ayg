@@ -273,8 +273,8 @@ public class Message extends javax.xml.soap.SOAPMessage
                 /**
                  * Attempt to resolve class name, verify that these are present...
                  */
-                ClassUtils.forName("javax.activation.DataHandler");
-                ClassUtils.forName("javax.mail.internet.MimeMultipart");
+                ClassUtils.forName("jakarta.activation.DataHandler");
+                ClassUtils.forName("jakarta.mail.internet.MimeMultipart");
 
                 attachImpl = ClassUtils.forName(attachImpName);
 

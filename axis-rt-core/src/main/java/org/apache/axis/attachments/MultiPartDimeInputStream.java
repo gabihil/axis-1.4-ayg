@@ -23,7 +23,7 @@ import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.axis.utils.Messages;
 import org.apache.commons.logging.Log;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 
 /**

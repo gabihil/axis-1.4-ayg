@@ -10,8 +10,8 @@ package test.wsdl.interop4.groupG.dime.rpc;
 import org.apache.axis.attachments.OctetStream;
 import org.apache.axis.client.Call;
 
-import javax.activation.DataSource;
-import javax.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.DataHandler;
 import java.net.URL;
 import java.util.Arrays;
 import java.io.InputStream;

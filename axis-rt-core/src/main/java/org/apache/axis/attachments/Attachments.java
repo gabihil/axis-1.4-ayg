@@ -19,9 +19,9 @@ import org.apache.axis.Part;
 
 /**
  * Access the Attachments of a Message.  This interface essentially
- * firewalls the rest of Axis from any dependencies on javax.activation.
+ * firewalls the rest of Axis from any dependencies on jakarta.activation.
  * <p>
- * If javax.activation is not available, this is the *only* class that
+ * If jakarta.activation is not available, this is the *only* class that
  * will be compiled in org.apache.axis.attachments.
  *
  * @author Rob Jellinghaus (robj@unrealities.com)

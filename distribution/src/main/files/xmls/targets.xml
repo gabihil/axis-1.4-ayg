@@ -121,7 +121,7 @@
       classpathref="classpath"/>
 
     <available property="activation.present"
-      classname="javax.activation.DataHandler"
+      classname="jakarta.activation.DataHandler"
       classpathref="classpath"/>
 
     <available property="security.present"
@@ -129,7 +129,7 @@
       classpathref="classpath"/>
 
     <available property="mailapi.present"
-      classname="javax.mail.internet.MimeMessage"
+      classname="jakarta.mail.internet.MimeMessage"
       classpathref="classpath"/>
 
     <available property="httpunit.present"
@@ -177,8 +177,8 @@
 
     <condition property="attachments.present" >
       <and>
-        <available classname="javax.activation.DataHandler" classpathref="classpath" />
-        <available classname="javax.mail.internet.MimeMessage" classpathref="classpath" />
+        <available classname="jakarta.activation.DataHandler" classpathref="classpath" />
+        <available classname="jakarta.mail.internet.MimeMessage" classpathref="classpath" />
       </and>
     </condition>
 
@@ -204,8 +204,8 @@
 
     <condition property="jimiAndAttachments.present">
       <and>
-        <available classname="javax.activation.DataHandler" classpathref="classpath" />
-        <available classname="javax.mail.internet.MimeMessage" classpathref="classpath" />
+        <available classname="jakarta.activation.DataHandler" classpathref="classpath" />
+        <available classname="jakarta.mail.internet.MimeMessage" classpathref="classpath" />
         <available classname="com.sun.jimi.core.Jimi" classpathref="classpath" />
       </and>
     </condition>

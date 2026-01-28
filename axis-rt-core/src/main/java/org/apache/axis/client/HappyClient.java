@@ -368,13 +368,13 @@ public class HappyClient {
 
         title("happyClientOptional");
 
-        wanted += wantClass("javax.mail.internet.MimeMessage",
+        wanted += wantClass("jakarta.mail.internet.MimeMessage",
                 "mail.jar",
                 "Mail",
                 "happyClientNoAttachments",
                 "http://java.sun.com/products/javamail/");
 
-        wanted += wantClass("javax.activation.DataHandler",
+        wanted += wantClass("jakarta.activation.DataHandler",
                 "activation.jar",
                 "Activation",
                 "happyClientNoAttachments",

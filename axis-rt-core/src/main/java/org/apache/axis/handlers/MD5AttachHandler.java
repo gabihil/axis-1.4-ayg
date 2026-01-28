@@ -52,7 +52,7 @@ public class MD5AttachHandler extends org.apache.axis.handlers.BasicHandler {
             //Get the href associated with the attachment.
             String href = paramElement.getAttribute(soapConstants.getAttrHref());
             org.apache.axis.Part ap = msg.getAttachmentsImpl().getAttachmentByReference(href);
-            javax.activation.DataHandler dh = org.apache.axis.attachments.AttachmentUtils.getActivationDataHandler(ap);
+            jakarta.activation.DataHandler dh = org.apache.axis.attachments.AttachmentUtils.getActivationDataHandler(ap);
             org.w3c.dom.Node timeNode = paramElement.getFirstChild();
             long startTime = -1;
 

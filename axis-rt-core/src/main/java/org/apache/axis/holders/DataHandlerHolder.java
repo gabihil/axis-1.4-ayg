@@ -16,7 +16,7 @@
 package org.apache.axis.holders;
 
 import javax.xml.rpc.holders.Holder;
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 /**
  * Class DataHandlerHolder

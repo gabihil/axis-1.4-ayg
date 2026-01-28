@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache.axis</groupId>
-        <artifactId>axis-project</artifactId>
+        <artifactId>axis</artifactId>
         <version>1.4.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -98,11 +98,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>axis-rt-transport-jms</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>axis-rt-transport-mail</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
