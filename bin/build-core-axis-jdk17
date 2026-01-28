@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cat <<'MSG'
+[ATTENTION] Building shaded axis-rt-core runtime JAR with JDK 17.
+- Ensure JAVA_HOME points to a JDK 17+ installation.
+- This will run: mvn -pl axis-rt-core -am -DskipTests package
+MSG
+
+mvn -pl axis-rt-core -am -DskipTests package

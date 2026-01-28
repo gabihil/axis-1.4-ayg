@@ -177,9 +177,16 @@
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>lib</outputDirectory>
+            <outputFileNameMapping>axis.jar</outputFileNameMapping>
+            <includes>
+                <include>*:axis-uber:jar</include>
+            </includes>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
             <outputFileNameMapping>${artifact.artifactId}.jar</outputFileNameMapping>
             <includes>
-                <include>*:axis:jar</include>
                 <include>*:axis-ant:jar</include>
             </includes>
         </dependencySet>
@@ -206,6 +213,9 @@
                 <include>*:commons-discovery:jar</include>
                 <include>*:commons-logging:jar</include>
                 <include>*:log4j:jar</include>
+                <include>*:jakarta.mail:jar</include>
+                <include>*:jakarta.activation-api:jar</include>
+                <include>*:angus-activation:jar</include>
                 <include>*:wsdl4j:jar</include>
             </includes>
         </dependencySet>

@@ -25,7 +25,7 @@
         <version>1.4.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>axis</artifactId>
+    <artifactId>axis-uber</artifactId>
     <name>Axis Uber-JAR</name>
     <description>Uber-JAR containing the same packages as the corresponding JAR from Axis 1.4. For compatibility only.</description>
     <url>${baseUrl}</url>
