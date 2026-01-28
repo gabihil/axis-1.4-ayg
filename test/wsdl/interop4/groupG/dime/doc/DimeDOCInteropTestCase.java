@@ -17,8 +17,8 @@ import java.io.ByteArrayInputStream;
 import org.apache.axis.attachments.OctetStream;
 import org.apache.axis.client.Call;
 
-import javax.activation.DataSource;
-import javax.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.DataHandler;
 
 public class DimeDOCInteropTestCase extends junit.framework.TestCase {
     public DimeDOCInteropTestCase(java.lang.String name) {

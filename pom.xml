@@ -26,7 +26,7 @@
         <relativePath>maven/apache-parent-9.pom</relativePath>
     </parent>
     <groupId>org.apache.axis</groupId>
-    <artifactId>axis-project</artifactId>
+    <artifactId>axis</artifactId>
     <name>Axis</name>
     <version>1.4.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -59,7 +59,6 @@
     <inceptionYear>2000</inceptionYear>
     <modules>
         <module>apidocs</module>
-        <module>axis</module>
         <module>axis-ant</module>
         <module>axis-codegen</module>
         <module>axis-jaxrpc</module>
@@ -74,7 +73,6 @@
         <module>axis-rt-transport-http-hc3</module>
         <module>axis-rt-transport-http-javanet</module>
         <module>axis-rt-transport-jms</module>
-        <module>axis-rt-transport-mail</module>
         <module>axis-saaj</module>
         <module>axis-standalone-server</module>
         <module>axis-testutils</module>
@@ -95,15 +93,20 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>javax.activation</groupId>
-                <artifactId>activation</artifactId>
-                <version>1.1</version>
+                <groupId>jakarta.activation</groupId>
+                <artifactId>jakarta.activation-api</artifactId>
+                <version>2.1.2</version>
             </dependency>
             <dependency>
-                <groupId>javax.mail</groupId>
-                <artifactId>mail</artifactId>
-                <version>1.4.1</version>
+                <groupId>org.eclipse.angus</groupId>
+                <artifactId>angus-activation</artifactId>
+                <version>2.0.2</version>
             </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.2</version>
+        </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

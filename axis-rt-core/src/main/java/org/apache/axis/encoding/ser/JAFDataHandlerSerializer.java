@@ -18,7 +18,7 @@ package org.apache.axis.encoding.ser;
 
 import java.io.IOException;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 import javax.xml.namespace.QName;
 
 import org.apache.axis.Constants;

@@ -11,7 +11,7 @@
     <transport name="local" pivot="java:org.apache.axis.transport.local.LocalSender"/>
     <transport name="java" pivot="java:org.apache.axis.transport.java.JavaSender"/>
 <!-- START SNIPPET: typeMapping -->
-    <typeMapping languageSpecificType="java:javax.activation.DataHandler" qname="xs:base64Binary"
+    <typeMapping languageSpecificType="java:jakarta.activation.DataHandler" qname="xs:base64Binary"
                  deserializer="org.apache.axis.encoding.ser.JAFDataHandlerDeserializerFactory"
                  serializer="org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory" 
                  encodingStyle=""/>

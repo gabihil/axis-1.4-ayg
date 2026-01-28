@@ -31,7 +31,7 @@ public class MD5AttachTest {
         }
 
         //Create the attachment.
-        javax.activation.DataHandler dh = new javax.activation.DataHandler(new javax.activation.FileDataSource(args[0]));
+        jakarta.activation.DataHandler dh = new jakarta.activation.DataHandler(new jakarta.activation.FileDataSource(args[0]));
 
         org.apache.axis.message.SOAPEnvelope env = new org.apache.axis.message.SOAPEnvelope();
 

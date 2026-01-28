@@ -28,8 +28,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.util.Hashtable;
@@ -107,7 +107,7 @@ public class TestRef {
 
         java.util.Stack rev= new java.util.Stack();
         //Create an attachment referenced by a generated contentId.
-        AttachmentPart ap= new AttachmentPart(new javax.activation.DataHandler(
+        AttachmentPart ap= new AttachmentPart(new jakarta.activation.DataHandler(
           "Now is the time", "text/plain" ));
          refs.add(ap.getContentIdRef()); //reference the attachment by contentId.
          ap.setMimeHeader(positionHTTPHeader, ""+refs.size() ); //create a MIME header indicating postion.

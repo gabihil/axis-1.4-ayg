@@ -19,7 +19,7 @@ import org.apache.axis.AxisFault;
 import org.apache.axis.Part;
 import org.apache.axis.utils.Messages;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 /**
  * This class allow access to the Jaf data handler in AttachmentPart.
@@ -70,6 +70,6 @@ public class AttachmentUtils {
             return false;
         }
 
-        return value instanceof javax.activation.DataHandler;
+        return value instanceof jakarta.activation.DataHandler;
     }
 }

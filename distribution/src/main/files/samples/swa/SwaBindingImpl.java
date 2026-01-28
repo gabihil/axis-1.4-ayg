@@ -12,8 +12,8 @@ import org.apache.axis.MessageContext;
 import org.apache.axis.attachments.AttachmentPart;
 import org.apache.axis.attachments.Attachments;
 
-import javax.activation.DataHandler;
-import javax.mail.internet.MimeBodyPart;
+import jakarta.activation.DataHandler;
+import jakarta.mail.internet.MimeBodyPart;
 import java.util.Iterator;
 
 /**
@@ -32,7 +32,7 @@ public class SwaBindingImpl implements samples.swa.SwaPort {
      * @throws java.rmi.RemoteException 
      */
     public java.lang.String swaSend(
-            java.lang.String applicationName, javax.mail.internet.MimeMultipart content)
+            java.lang.String applicationName, jakarta.mail.internet.MimeMultipart content)
             throws java.rmi.RemoteException {
 
         MimeBodyPart mpb = null;
@@ -79,7 +79,7 @@ public class SwaBindingImpl implements samples.swa.SwaPort {
 
                 System.out.println("Mime data type: " + dh.getContentType());
             }
-        } catch (javax.mail.MessagingException ex) {
+        } catch (jakarta.mail.MessagingException ex) {
         }
 
         /*

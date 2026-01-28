@@ -1,6 +1,6 @@
 package samples.mtomstub.service;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 public class ResponseDownloadFile {
     private String fileName;

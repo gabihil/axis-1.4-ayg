@@ -26,8 +26,8 @@ import org.apache.axis.encoding.ser.JAFDataHandlerSerializerFactory;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.axis.utils.Options;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ParameterMode;
 import javax.xml.soap.AttachmentPart;
@@ -77,7 +77,7 @@ public class EchoAttachment {
      */
     public boolean echo(final boolean doTheDIME, String filename) throws Exception {
 
-        //javax.activation.MimetypesFileTypeMap map= (javax.activation.MimetypesFileTypeMap)javax.activation.MimetypesFileTypeMap.getDefaultFileTypeMap();
+        //jakarta.activation.MimetypesFileTypeMap map= (jakarta.activation.MimetypesFileTypeMap)jakarta.activation.MimetypesFileTypeMap.getDefaultFileTypeMap();
         //map.addMimeTypes("application/x-org-apache-axis-wsdd wsdd");
 
 
@@ -238,7 +238,7 @@ public class EchoAttachment {
             throw new AxisFault("", (String) ret, null, null);
         }
 
-        if (!(ret instanceof javax.activation.DataHandler[])) {
+        if (!(ret instanceof jakarta.activation.DataHandler[])) {
             //The wrong type of object that what was expected.
             System.out.println("Received unexpected type :" +
                                ret.getClass().getName());
@@ -249,7 +249,7 @@ public class EchoAttachment {
         //Still here, so far so good.
         //Now lets brute force compare the source attachment
         // to the one we received.
-        javax.activation.DataHandler[] received = (javax.activation.DataHandler[]) ret;
+        jakarta.activation.DataHandler[] received = (jakarta.activation.DataHandler[]) ret;
 
         int i = 0;
         for (i = 0; i < received.length && i < attachments.length; ++i) {

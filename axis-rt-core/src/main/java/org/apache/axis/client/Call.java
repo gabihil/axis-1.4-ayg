@@ -1500,7 +1500,7 @@ public class Call implements javax.xml.rpc.Call {
             // Get the javaType
             String javaType = null;
             if (parameters.returnParam.getMIMEInfo() != null) {
-                javaType = "javax.activation.DataHandler";
+                javaType = "jakarta.activation.DataHandler";
             }
             else {
                 javaType = parameters.returnParam.getType().getName();

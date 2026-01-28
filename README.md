@@ -43,6 +43,22 @@ mvn -pl axis-tools  -am -DskipTests install
 
 Although `-am` (also-make) is used, this order avoids dependency resolution issues when working with snapshot artifacts.
 
+### Shaded runtime JAR
+
+If you need a single runtime JAR to embed in another project, build the shaded `axis-rt-core` artifact:
+
+```bash
+mvn -pl axis-rt-core -am -DskipTests package
+```
+
+This produces:
+
+```
+axis-rt-core/target/axis-rt-core-1.4.1-SNAPSHOT-all.jar
+```
+
+**Java version:** This fork is adapted to build and run on **JDK 17**. Use Java 17+ for the shaded JAR.
+
 ---
 
 ## Configuration Notes

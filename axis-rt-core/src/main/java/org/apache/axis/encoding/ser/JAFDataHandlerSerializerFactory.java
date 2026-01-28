@@ -18,7 +18,7 @@ package org.apache.axis.encoding.ser;
 
 import org.apache.axis.attachments.OctetStream;
 
-import javax.mail.internet.MimeMultipart;
+import jakarta.mail.internet.MimeMultipart;
 import javax.xml.namespace.QName;
 import javax.xml.transform.Source;
 import java.awt.*;
