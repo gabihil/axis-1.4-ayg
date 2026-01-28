@@ -2,7 +2,7 @@ package samples.mtomstub.service;
 
 import jakarta.activation.DataHandler;
 import javax.jws.WebService;
-import javax.mail.util.ByteArrayDataSource;
+import jakarta.mail.util.ByteArrayDataSource;
 
 @WebService(endpointInterface="samples.mtomstub.service.DownloadFile", serviceName = "DownloadFileWS")
 public class DownloadFileImpl implements DownloadFile {

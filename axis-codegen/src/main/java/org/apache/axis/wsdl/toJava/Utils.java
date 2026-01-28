@@ -679,7 +679,7 @@ public class Utils extends org.apache.axis.wsdl.symbolTable.Utils {
                 return "(javax.xml.transform.Source" + mimeDimensions + ") "
                         + var + ";";
             } else if (mimeType.startsWith("multipart/")) {
-                return "(javax.mail.internet.MimeMultipart" + mimeDimensions
+                return "(jakarta.mail.internet.MimeMultipart" + mimeDimensions
                         + ") " + var + ";";
             } else if (mimeType.startsWith("application/octetstream")
                     || mimeType.startsWith("application/octet-stream")) {

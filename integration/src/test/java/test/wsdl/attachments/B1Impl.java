@@ -11,9 +11,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.rmi.RemoteException;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMultipart;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMultipart;
 import javax.xml.rpc.holders.FloatHolder;
 import javax.xml.rpc.holders.StringHolder;
 
@@ -61,18 +61,18 @@ public class B1Impl implements test.wsdl.attachments.Pt1 {
         return "OutputPlainText";
     }
 
-    public void inputMimeMultipart(javax.mail.internet.MimeMultipart body) throws java.rmi.RemoteException {
+    public void inputMimeMultipart(jakarta.mail.internet.MimeMultipart body) throws java.rmi.RemoteException {
     }
 
-    public javax.mail.internet.MimeMultipart inoutMimeMultipart(javax.mail.internet.MimeMultipart body) throws java.rmi.RemoteException {
+    public jakarta.mail.internet.MimeMultipart inoutMimeMultipart(jakarta.mail.internet.MimeMultipart body) throws java.rmi.RemoteException {
         return body;
     }
 
-    public javax.mail.internet.MimeMultipart echoMimeMultipart(javax.mail.internet.MimeMultipart body) throws java.rmi.RemoteException {
+    public jakarta.mail.internet.MimeMultipart echoMimeMultipart(jakarta.mail.internet.MimeMultipart body) throws java.rmi.RemoteException {
         return body;
     }
 
-    public javax.mail.internet.MimeMultipart outputMimeMultipart() throws java.rmi.RemoteException {
+    public jakarta.mail.internet.MimeMultipart outputMimeMultipart() throws java.rmi.RemoteException {
         try {
             return createMimeMultipart("outputMimeMultipart");
         } catch (MessagingException me) {

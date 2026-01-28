@@ -385,7 +385,7 @@
     /*
      * now the stuff we can live without
      */
-    wanted+=wantClass(out,"javax.mail.internet.MimeMessage",
+    wanted+=wantClass(out,"jakarta.mail.internet.MimeMessage",
             "mail.jar",
             "Mail API",
             getMessage("attachmentsError"),
