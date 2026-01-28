@@ -14,7 +14,7 @@ Axis is licensed under the Apache License 2.0. See the files called LICENSE and 
 
 This repository is a maintained fork of **Apache Axis 1.4**, based on the final SVN-era sources, with additional **security patches and compatibility fixes**.
 
-The fork provides **limited functionality**, focusing on the core modules only:
+The fork provides **limited functionality**, focusing on the core modules only. You can create the core `axis-rt-core` JAR using the build commands listed below:
 - client
 - server
 - wsdl2java
