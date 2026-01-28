@@ -297,8 +297,13 @@ public class TestXMLUtils extends AxisTestBase
 
         StringReader strReader = new StringReader(sb.toString());
         InputSource inputsrc = new InputSource(strReader);
-        Document doc = XMLUtils.newDocument(inputsrc);
-        String output = org.apache.axis.utils.DOM2Writer.nodeToString(doc,false);
+        try {
+            Document doc = XMLUtils.newDocument(inputsrc);
+            String output = org.apache.axis.utils.DOM2Writer.nodeToString(doc, false);
+            fail("Expected DOCTYPE to be disallowed, but parsed XML: " + output);
+        } catch (Exception exception) {
+            assertDoctypeDisallowed(exception);
+        }
     }
 
     String msg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
@@ -320,7 +325,12 @@ public class TestXMLUtils extends AxisTestBase
         StringReader strReader = new StringReader(msg);
         InputSource inputsrc = new InputSource(strReader);
         SAXParser parser = XMLUtils.getSAXParser();
-        parser.getParser().parse(inputsrc);
+        try {
+            parser.getParser().parse(inputsrc);
+            fail("Expected DOCTYPE to be disallowed by SAX parser.");
+        } catch (Exception exception) {
+            assertDoctypeDisallowed(exception);
+        }
     }
 
     public void testSAXXXE2() throws Exception
@@ -328,7 +338,12 @@ public class TestXMLUtils extends AxisTestBase
         StringReader strReader2 = new StringReader(msg);
         InputSource inputsrc2 = new InputSource(strReader2);
         SAXParser parser2 = XMLUtils.getSAXParser();
-        parser2.getXMLReader().parse(inputsrc2);
+        try {
+            parser2.getXMLReader().parse(inputsrc2);
+            fail("Expected DOCTYPE to be disallowed by SAX XMLReader.");
+        } catch (Exception exception) {
+            assertDoctypeDisallowed(exception);
+        }
     }
 
     // If we are using DeserializationContext, we do not allow
@@ -407,5 +422,13 @@ public class TestXMLUtils extends AxisTestBase
         } finally {
             XMLUnit.setIgnoreWhitespace(oldIgnore);
         }
+    }
+
+    private void assertDoctypeDisallowed(Exception exception)
+    {
+        String message = exception.getMessage();
+        assertNotNull("Expected exception message to explain disallowed DOCTYPE.", message);
+        assertTrue("Expected DOCTYPE to be disallowed. Message was: " + message,
+                   message.contains("DOCTYPE is disallowed"));
     }
 }

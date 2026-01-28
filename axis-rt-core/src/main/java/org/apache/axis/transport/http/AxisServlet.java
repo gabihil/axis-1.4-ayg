@@ -212,10 +212,6 @@ public class AxisServlet extends AxisServletBase {
             log.debug("Enter: doGet()");
 
         }
-        if (isJwsRequest(request)) {
-            rejectJwsRequest(response);
-            return;
-        }
         PrintWriter writer = new FilterPrintWriter(response);
 
         try {
@@ -594,10 +590,6 @@ public class AxisServlet extends AxisServletBase {
         MessageContext msgContext = null;
         if (isDebug) {
             log.debug("Enter: doPost()");
-        }
-        if (isJwsRequest(req)) {
-            rejectJwsRequest(res);
-            return;
         }
         if (tlog.isDebugEnabled()) {
             t0 = System.currentTimeMillis();

@@ -60,6 +60,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>javax.activation</artifactId>
+            <version>1.2.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -148,7 +153,7 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}/axis-${project.version}/lib</outputDirectory>
-                            <includeArtifactIds>junit,mail</includeArtifactIds>
+                            <includeArtifactIds>junit,mail,javax.activation</includeArtifactIds>
                             <skip>${skipTests}</skip>
                         </configuration>
                     </execution>

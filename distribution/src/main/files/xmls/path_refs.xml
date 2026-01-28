@@ -31,6 +31,4 @@
     <fileset dir="${lib.dir}/endorsed">
         <include name="**/*.jar"/>
     </fileset>
-    <pathelement path="${sun.boot.class.path}"/>
   </path>
-

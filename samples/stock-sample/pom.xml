@@ -87,9 +87,6 @@
                                     <directory>src/main/config</directory>
                                 </config>
                             </configs>
-                            <jwsDirs>
-                                <jwsDir>src/main/jws</jwsDir>
-                            </jwsDirs>
                             <wsdds>
                                 <wsdd>
                                     <directory>src/main/wsdd</directory>
