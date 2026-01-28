@@ -49,7 +49,7 @@ public class JwsTest extends HttpUnitTestBase {
             return;
         }
         WebRequest request = new GetMethodWebRequest(url+"/StockQuoteService.jws?wsdl");
-        assertStringInBody(request,"<wsdl:definitions");
+        expectJwsDisabled(request);
     }
 
     public void testEchoHeadersWsdl() throws Exception {
@@ -57,7 +57,7 @@ public class JwsTest extends HttpUnitTestBase {
             return;
         }
         WebRequest request = new GetMethodWebRequest(url + "/EchoHeaders.jws?wsdl");
-        assertStringInBody(request, "<wsdl:definitions");
+        expectJwsDisabled(request);
     }
 
 
@@ -66,7 +66,7 @@ public class JwsTest extends HttpUnitTestBase {
             return;
         }
         WebRequest request = new GetMethodWebRequest(url + "/EchoHeaders.jws");
-        assertStringInBody(request, "Web Service");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -80,7 +80,7 @@ public class JwsTest extends HttpUnitTestBase {
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws");
         request.setParameter("method", "whoami");
-        assertStringInBody(request, "Hello");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -95,7 +95,7 @@ public class JwsTest extends HttpUnitTestBase {
                 + "/EchoHeaders.jws");
         request.setHeaderField("x-header","echo-header-test");
         request.setParameter("method", "list");
-        assertStringInBody(request, "echo-header-test");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -108,7 +108,7 @@ public class JwsTest extends HttpUnitTestBase {
         }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=echo&param=foo+bar");
-        assertStringInBody(request, "foo bar");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -121,7 +121,7 @@ public class JwsTest extends HttpUnitTestBase {
         }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders-not-really-there.jws");
-        expectErrorCode(request,404, "No service");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -134,8 +134,7 @@ public class JwsTest extends HttpUnitTestBase {
         }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=throwAxisFault&param=oops!");
-        expectErrorCode(request, 500,
-            "<faultcode>soapenv:Server.generalException</faultcode>");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -148,8 +147,7 @@ public class JwsTest extends HttpUnitTestBase {
         }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=throwAxisFault&param=oops!");
-        expectErrorCode(request, 500,
-                "<faultcode>soapenv:Server.userException</faultcode>");
+        expectJwsDisabled(request);
     }
 
     /**
@@ -166,9 +164,10 @@ public class JwsTest extends HttpUnitTestBase {
         }
         WebRequest request = new GetMethodWebRequest(url
                 + "/EchoHeaders.jws?method=echo&param=" + URLEncoder.encode("\u221a", "UTF-8"));
-        // TODO: Axis actually returns a character entity; may be related to AXIS-2342
-//        assertStringInBody(request, "\u221a");
-        assertStringInBody(request, "&#x221A;");
+        expectJwsDisabled(request);
     }
 
+    private void expectJwsDisabled(WebRequest request) throws Exception {
+        expectErrorCode(request, 404, "JWS support is disabled.");
+    }
 }
