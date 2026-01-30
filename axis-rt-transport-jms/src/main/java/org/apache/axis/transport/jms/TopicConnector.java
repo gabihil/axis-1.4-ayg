@@ -18,21 +18,21 @@ package org.apache.axis.transport.jms;
 
 import org.apache.axis.components.jms.JMSVendorAdapter;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.Session;
-import javax.jms.TemporaryTopic;
-import javax.jms.Topic;
-import javax.jms.TopicConnection;
-import javax.jms.TopicConnectionFactory;
-import javax.jms.TopicPublisher;
-import javax.jms.TopicSession;
-import javax.jms.TopicSubscriber;
+import jakarta.jms.Connection;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Destination;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.MessageListener;
+import jakarta.jms.Session;
+import jakarta.jms.TemporaryTopic;
+import jakarta.jms.Topic;
+import jakarta.jms.TopicConnection;
+import jakarta.jms.TopicConnectionFactory;
+import jakarta.jms.TopicPublisher;
+import jakarta.jms.TopicSession;
+import jakarta.jms.TopicSubscriber;
 import java.util.HashMap;
 
 /**
@@ -192,7 +192,7 @@ public class TopicConnector extends JMSConnector
                   clientID, username, password);
         }
 
-        protected ListenerSession createListenerSession(javax.jms.Connection connection,
+        protected ListenerSession createListenerSession(jakarta.jms.Connection connection,
                                                         Subscription subscription)
             throws Exception
         {
@@ -249,7 +249,7 @@ public class TopicConnector extends JMSConnector
                   clientID, username, password);
         }
 
-        protected SendSession createSendSession(javax.jms.Connection connection)
+        protected SendSession createSendSession(jakarta.jms.Connection connection)
             throws JMSException
         {
             TopicSession session = createTopicSession((TopicConnection)connection,

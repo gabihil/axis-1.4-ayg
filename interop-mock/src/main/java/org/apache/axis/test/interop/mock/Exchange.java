@@ -21,8 +21,8 @@ package org.apache.axis.test.interop.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.el.ELContext;
-import javax.el.ExpressionFactory;
+import jakarta.el.ELContext;
+import jakarta.el.ExpressionFactory;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
@@ -55,7 +55,7 @@ import com.sun.msv.datatype.xsd.XSDatatype;
  * expression must be a simple variable expression (e.g. <code>${myInputParameter}</code>). During
  * request matching, the value of the variable will be set to the content of the text node in the
  * actual request. In a response message, the expression can be any EL expression as defined by the
- * <code>javax.el</code> API.
+ * <code>jakarta.el</code> API.
  * <li>Element templates in the form
  * <code>&lt;t:element t:name="${var}" xmlns:t="http://axis.apache.org/mock/template">...&lt;/t:element></code>.
  * In a request message this template matches any element, and the {@link QName} of that element

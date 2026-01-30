@@ -24,8 +24,8 @@ import org.apache.axis.server.AxisServer;
 import org.apache.axis.utils.Messages;
 import org.apache.commons.logging.Log;
 
-import javax.jms.BytesMessage;
-import javax.jms.Destination;
+import jakarta.jms.BytesMessage;
+import jakarta.jms.Destination;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
