@@ -23,16 +23,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.SessionManager;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.HashSessionManager;
-import org.mortbay.jetty.servlet.ServletHandler;
-import org.mortbay.jetty.servlet.ServletHolder;
-import org.mortbay.jetty.servlet.ServletMapping;
-import org.mortbay.jetty.servlet.SessionHandler;
-import org.mortbay.resource.Resource;
-import org.mortbay.resource.ResourceCollection;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.servlet.ServletMapping;
+import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.util.resource.ResourceCollection;
 
 /**
  * Jetty based stand-alone Axis server.
@@ -85,16 +82,13 @@ public final class StandaloneAxisServer {
         }
         
         server = new Server(port);
-        server.setGracefulShutdown(1000);
-        Context context = new Context(server, "/axis");
+        server.setStopTimeout(1000);
+        server.setStopAtShutdown(true);
+        ServletContextHandler context = new ServletContextHandler(server, "/axis", ServletContextHandler.SESSIONS);
         context.setBaseResource(new ResourceCollection((Resource[])resources.toArray(new Resource[resources.size()])));
-        SessionManager sessionManager;
-        if (maxSessions == -1) {
-            sessionManager = new HashSessionManager();
-        } else {
-            sessionManager = new LimitSessionManager(maxSessions);
+        if (maxSessions != -1) {
+            context.setSessionHandler(new LimitSessionManager(maxSessions));
         }
-        context.setSessionHandler(new SessionHandler(sessionManager));
         quitListener = new QuitListener();
         context.setAttribute(QuitHandler.QUIT_LISTENER, quitListener);
         ServletHandler servletHandler = context.getServletHandler();
