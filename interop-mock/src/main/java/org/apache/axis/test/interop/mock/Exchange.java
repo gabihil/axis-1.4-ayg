@@ -26,7 +26,7 @@ import javax.el.ExpressionFactory;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.relaxng.datatype.DatatypeException;
