@@ -19,7 +19,7 @@ The fork provides **limited functionality**, focusing on the core modules only. 
 - server
 - wsdl2java
 
-It has been adapted to **compile and run on JDK 17**.
+It has been adapted to **compile and run on JDK 17 and 25**.
 
 A helper script for `wsdl2java` is included and can be executed from the repository root:
 
@@ -33,7 +33,7 @@ A helper script for `wsdl2java` is included and can be executed from the reposit
 
 To use `wsdl2java`, the required modules must first be installed into your **local Maven repository (`~/.m2`)**.
 
-Ensure `JAVA_HOME` points to a **JDK 17** installation, then run the following commands **in order**:
+Ensure `JAVA_HOME` points to a **JDK 17 or 25** installation, then run the following commands **in order**:
 
 ```bash
 mvn -pl axis-jaxrpc -am -DskipTests install
@@ -57,7 +57,7 @@ This produces:
 axis-rt-core/target/axis-rt-core-1.4.1-SNAPSHOT-all.jar
 ```
 
-**Java version:** This fork is adapted to build and run on **JDK 17**. Use Java 17+ for the shaded JAR.
+**Java version:** This fork is adapted to build and run on **JDK 17 or 25**. Use Java 17+ for the shaded JAR.
 
 ---
 
