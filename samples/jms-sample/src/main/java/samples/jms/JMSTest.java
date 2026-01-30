@@ -101,7 +101,7 @@ public class JMSTest {
         //call.setProperty(JMSConstants.WAIT_FOR_RESPONSE, Boolean.FALSE);
         //call.setProperty(JMSConstants.PRIORITY, new Integer(5));
         //call.setProperty(JMSConstants.DELIVERY_MODE,
-        //    new Integer(javax.jms.DeliveryMode.PERSISTENT));
+        //    new Integer(jakarta.jms.DeliveryMode.PERSISTENT));
         //call.setProperty(JMSConstants.TIME_TO_LIVE, new Long(20000));
 
         call.setProperty(JMSConstants.DESTINATION, destination);

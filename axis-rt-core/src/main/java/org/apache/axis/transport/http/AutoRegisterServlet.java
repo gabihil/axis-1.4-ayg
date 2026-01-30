@@ -52,7 +52,7 @@ public class AutoRegisterServlet extends AxisServletBase {
     /**
      * init by registering
      */
-    public void init() throws javax.servlet.ServletException {
+    public void init() throws jakarta.servlet.ServletException {
         log.debug(Messages.getMessage("autoRegServletInit00"));
         autoRegister();
     }

@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Locale;
 
-import javax.el.FunctionMapper;
+import jakarta.el.FunctionMapper;
 
 public class Functions extends FunctionMapper {
     public Method resolveFunction(String prefix, String localName) {

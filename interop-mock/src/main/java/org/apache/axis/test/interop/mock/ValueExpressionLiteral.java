@@ -18,11 +18,11 @@
  */
 package org.apache.axis.test.interop.mock;
 
-import javax.el.ELContext;
-import javax.el.PropertyNotWritableException;
-import javax.el.ValueExpression;
+import jakarta.el.ELContext;
+import jakarta.el.PropertyNotWritableException;
+import jakarta.el.ValueExpression;
 
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 public final class ValueExpressionLiteral<T> extends ValueExpression {
     private static final long serialVersionUID = -3847213439349942695L;

@@ -166,7 +166,7 @@ public class TestSimpleSession extends TestCase implements ServiceLifecycle {
      * init method to initialize its configuration and setup access
      * to any external resources.
      *  @param   context Initialization context for a JAX-RPC service
-     endpoint; Carries javax.servlet.ServletContext
+     endpoint; Carries jakarta.servlet.ServletContext
      for the servlet based JAX-RPC endpoints
      *  @throws  ServiceException If any error in initialization of the
      service endpoint; or if any illegal context has

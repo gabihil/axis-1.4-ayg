@@ -18,9 +18,9 @@ package org.apache.axis.transport.jms;
 
 import java.util.HashMap;
 
-import javax.jms.Destination;
-import javax.jms.MessageListener;
-import javax.jms.Session;
+import jakarta.jms.Destination;
+import jakarta.jms.MessageListener;
+import jakarta.jms.Session;
 
 /**
  * JMSEndpoint encapsulates interactions w/ a JMS destination.

@@ -19,7 +19,7 @@ package org.apache.axis.transport.http;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.axis.AxisFault;
 import org.apache.axis.MessageContext;
