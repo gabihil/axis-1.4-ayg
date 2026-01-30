@@ -183,7 +183,7 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.12.0</version>
                     <configuration>
-                        <source>17</source>
+                        <source>25</source>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -400,7 +400,7 @@
         </plugins>
     </reporting>
     <properties>
-        <javaVersion>17</javaVersion>
+        <javaVersion>25</javaVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <baseUrl>http://axis.apache.org/axis/java</baseUrl>
