@@ -24,8 +24,8 @@ import org.apache.axis.utils.Messages;
 import org.apache.axis.utils.Options;
 import org.apache.commons.logging.Log;
 
-import javax.jms.BytesMessage;
-import javax.jms.MessageListener;
+import jakarta.jms.BytesMessage;
+import jakarta.jms.MessageListener;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,7 +34,7 @@ import java.util.Properties;
 
 
 /**
- * SimpleJMSListener implements the javax.jms.MessageListener interface. Its
+ * SimpleJMSListener implements the jakarta.jms.MessageListener interface. Its
  *   basic purpose is listen asynchronously for messages and to pass them off
  *   to SimpleJMSWorker for processing.
  *
@@ -101,7 +101,7 @@ public class SimpleJMSListener implements MessageListener
      * This method is called asynchronously whenever a message arrives.
      * @param message
      */
-    public void onMessage(javax.jms.Message message)
+    public void onMessage(jakarta.jms.Message message)
     {
         try
         {

@@ -22,11 +22,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.axis.AxisEngine;
 import org.apache.axis.AxisFault;
@@ -100,7 +100,7 @@ public class AxisServletBase extends HttpServlet {
     /**
      * our initialize routine; subclasses should call this if they override it
      */
-    public void init() throws javax.servlet.ServletException {
+    public void init() throws jakarta.servlet.ServletException {
         ServletContext context = getServletConfig().getServletContext();
 
         webInfPath = context.getRealPath("/WEB-INF");

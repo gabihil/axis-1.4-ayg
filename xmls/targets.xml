@@ -85,7 +85,7 @@
     <mkdir dir="${build.dir}/work"/>
 
     <available property="servlet.present"
-      classname="javax.servlet.Servlet"
+      classname="jakarta.servlet.Servlet"
       classpathref="classpath"/>
 
     <available property="regexp.present"
@@ -142,7 +142,7 @@
 
     <condition property="jetty.present" >
       <and>
-        <available classname="javax.servlet.Servlet" classpathref="classpath" />
+        <available classname="jakarta.servlet.Servlet" classpathref="classpath" />
         <available classname="org.mortbay.http.HttpServer" classpathref="classpath" />
       </and>
     </condition>
@@ -211,12 +211,12 @@
     </condition>
 
     <condition property="jms.present" >
-      <available classname="javax.jms.Message" classpathref="classpath" />
+      <available classname="jakarta.jms.Message" classpathref="classpath" />
     </condition>
 
     <condition property="jmsAndSonicMQ.present" >
       <and>
-        <available classname="javax.jms.Message" classpathref="classpath" />
+        <available classname="jakarta.jms.Message" classpathref="classpath" />
         <available classname="progress.message.jclient.Message" classpathref="classpath" />
       </and>
     </condition>

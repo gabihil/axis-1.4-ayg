@@ -24,7 +24,7 @@ import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.axis.utils.Messages;
 import org.apache.commons.logging.Log;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.HashMap;
 
