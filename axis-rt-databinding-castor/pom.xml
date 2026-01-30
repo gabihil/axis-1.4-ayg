@@ -44,9 +44,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>castor</groupId>
-            <artifactId>castor</artifactId>
-            <version>0.9.4.2</version>
+            <groupId>org.codehaus.castor</groupId>
+            <artifactId>castor-xml</artifactId>
+            <version>1.4.1</version>
         </dependency>
     </dependencies>
 </project>
