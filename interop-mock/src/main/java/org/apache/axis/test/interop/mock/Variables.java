@@ -21,8 +21,8 @@ package org.apache.axis.test.interop.mock;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.el.ValueExpression;
-import javax.el.VariableMapper;
+import jakarta.el.ValueExpression;
+import jakarta.el.VariableMapper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

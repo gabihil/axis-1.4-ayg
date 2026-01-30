@@ -15,8 +15,8 @@
  */
 package javax.xml.rpc.server;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpSession;
 import javax.xml.rpc.handler.MessageContext;
 import java.security.Principal;
 
@@ -78,7 +78,7 @@ public interface ServletEndpointContext {
 
     /**
      * The <code>getHttpSession</code> method returns the current
-     * HTTP session (as a <code>javax.servlet.http.HTTPSession</code>).
+     * HTTP session (as a <code>jakarta.servlet.http.HTTPSession</code>).
      * When invoked by the service endpoint within a remote method
      * implementation, the <code>getHttpSession</code> returns the
      * HTTP session associated currently with this method invocation.

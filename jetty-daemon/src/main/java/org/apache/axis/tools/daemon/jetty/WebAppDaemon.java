@@ -28,10 +28,10 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.daemon.Daemon;
 import org.apache.commons.daemon.DaemonContext;
 import org.apache.commons.daemon.DaemonInitException;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.webapp.WebAppContext;
-import org.mortbay.resource.Resource;
-import org.mortbay.resource.ResourceCollection;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.util.resource.ResourceCollection;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 /**
  * 
@@ -62,13 +62,15 @@ public class WebAppDaemon implements Daemon {
         CommandLine cmdLine = parser.parse(options, daemonContext.getArguments());
         
         server = new Server(Integer.parseInt(cmdLine.getOptionValue("p")));
-        WebAppContext context = new WebAppContext(server, null, "/");
+        WebAppContext context = new WebAppContext();
+        context.setContextPath("/");
         String[] resourceDirs = cmdLine.getOptionValue("r").split(File.pathSeparator);
         Resource[] resources = new Resource[resourceDirs.length];
         for (int i=0; i<resourceDirs.length; i++) {
             resources[i] = Resource.newResource(resourceDirs[i]);
         }
         context.setBaseResource(new ResourceCollection(resources));
+        server.setHandler(context);
     }
 
     public void start() throws Exception {

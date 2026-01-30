@@ -18,87 +18,78 @@
  */
 package org.apache.axis.server.standalone;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.mortbay.jetty.servlet.AbstractSessionManager;
-import org.mortbay.jetty.servlet.HashSessionManager;
-
+import org.eclipse.jetty.http.HttpCookie;
+import org.eclipse.jetty.server.session.Session;
+import org.eclipse.jetty.server.session.SessionHandler;
 
 /**
- * {@link HashSessionManager} extension that limits the number of concurrently active session.
- * 
+ * {@link SessionHandler} extension that limits the number of concurrently active sessions.
+ *
  * @author Andreas Veithen
  */
-final class LimitSessionManager extends HashSessionManager {
-    // This is only needed to get access to some protected methods/fields.
-    class Session extends HashSessionManager.Session {
-        private static final long serialVersionUID = -6648322281268846583L;
-
-        Session(HttpServletRequest request) {
-            super(request);
-        }
-        
-        long accessed() {
-            return _accessed;
-        }
-
-        protected void timeout() {
-            super.timeout();
-        }
-    }
-    
+final class LimitSessionManager extends SessionHandler {
     private final int maxSessions;
-    private ScheduledExecutorService executor;
+    private final Map<String, Long> sessionAccessOrder =
+        new LinkedHashMap<String, Long>(16, 0.75f, true);
 
     LimitSessionManager(int maxSessions) {
         this.maxSessions = maxSessions;
     }
 
-    public void doStart() throws Exception {
-        super.doStart();
-        executor = new ScheduledThreadPoolExecutor(1);
-        executor.scheduleWithFixedDelay(new Runnable() {
-            public void run() {
-                scavenge();
-            }
-        }, 5, 5, TimeUnit.SECONDS);
-    }
-    
-    protected AbstractSessionManager.Session newSession(HttpServletRequest request) {
-        return new Session(request);
+    @Override
+    public HttpSession newHttpSession(HttpServletRequest request) {
+        HttpSession session = super.newHttpSession(request);
+        trackAccess(session);
+        enforceLimit(session.getId());
+        return session;
     }
 
-    void scavenge() {
-        while (true) {
-            Session sessionToRemove = null;
-            synchronized (this) {
-                if (_sessions.size() <= maxSessions) {
-                    break;
-                }
-                long minAccessed = Long.MAX_VALUE;
-                for (Iterator it = _sessions.values().iterator(); it.hasNext(); ) {
-                    Session session = (Session)it.next();
-                    long accessed = session.accessed();
-                    if (accessed < minAccessed) {
-                        minAccessed = accessed;
-                        sessionToRemove = session;
-                    }
-                }
-            }
-            sessionToRemove.timeout();
+    @Override
+    public HttpCookie access(HttpSession session, boolean secure) {
+        HttpCookie cookie = super.access(session, secure);
+        trackAccess(session);
+        return cookie;
+    }
+
+    @Override
+    public Session removeSession(String id, boolean invalidate) {
+        Session removed = super.removeSession(id, invalidate);
+        synchronized (sessionAccessOrder) {
+            sessionAccessOrder.remove(id);
+        }
+        return removed;
+    }
+
+    private void trackAccess(HttpSession session) {
+        synchronized (sessionAccessOrder) {
+            sessionAccessOrder.put(session.getId(), System.currentTimeMillis());
         }
     }
-    
-    public void doStop() throws Exception {
-    	executor.shutdown();
-    	executor.awaitTermination(60, TimeUnit.SECONDS);
-        super.doStop();
+
+    private void enforceLimit(String currentSessionId) {
+        String evictId = null;
+        synchronized (sessionAccessOrder) {
+            if (sessionAccessOrder.size() <= maxSessions) {
+                return;
+            }
+            Iterator<String> iterator = sessionAccessOrder.keySet().iterator();
+            if (iterator.hasNext()) {
+                evictId = iterator.next();
+                iterator.remove();
+            }
+        }
+        if (evictId != null && !evictId.equals(currentSessionId)) {
+            Session session = getSession(evictId);
+            if (session != null) {
+                session.invalidate();
+            }
+        }
     }
 }

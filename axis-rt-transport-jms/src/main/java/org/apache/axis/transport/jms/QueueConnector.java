@@ -18,20 +18,20 @@ package org.apache.axis.transport.jms;
 
 import org.apache.axis.components.jms.JMSVendorAdapter;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.Queue;
-import javax.jms.QueueConnection;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueReceiver;
-import javax.jms.QueueSender;
-import javax.jms.QueueSession;
-import javax.jms.Session;
-import javax.jms.TemporaryQueue;
+import jakarta.jms.Connection;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Destination;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.Queue;
+import jakarta.jms.QueueConnection;
+import jakarta.jms.QueueConnectionFactory;
+import jakarta.jms.QueueReceiver;
+import jakarta.jms.QueueSender;
+import jakarta.jms.QueueSession;
+import jakarta.jms.Session;
+import jakarta.jms.TemporaryQueue;
 
 /**
  * QueueConnector is a concrete JMSConnector subclass that specifically handles
@@ -146,7 +146,7 @@ public class QueueConnector extends JMSConnector
                   clientID, username, password);
         }
 
-        protected SendSession createSendSession(javax.jms.Connection connection)
+        protected SendSession createSendSession(jakarta.jms.Connection connection)
             throws JMSException
         {
             QueueSession session = createQueueSession((QueueConnection)connection,
@@ -277,7 +277,7 @@ public class QueueConnector extends JMSConnector
             super(connectionFactory, connection, threadName, clientID, username, password);
         }
 
-        protected ListenerSession createListenerSession(javax.jms.Connection connection,
+        protected ListenerSession createListenerSession(jakarta.jms.Connection connection,
                                                         Subscription subscription)
             throws Exception
         {

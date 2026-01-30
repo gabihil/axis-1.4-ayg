@@ -114,9 +114,9 @@
                 <version>4.13.2</version>
             </dependency>
             <dependency>
-                <groupId>xmlunit</groupId>
-                <artifactId>xmlunit</artifactId>
-                <version>1.0</version>
+                <groupId>org.xmlunit</groupId>
+                <artifactId>xmlunit-legacy</artifactId>
+                <version>2.11.0</version>
             </dependency>
             <dependency>
 			    <groupId>ch.qos.reload4j</groupId>
@@ -134,19 +134,19 @@
                 <version>1.2.15</version>
             </dependency>
             <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>2.6</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.20.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-daemon</groupId>
                 <artifactId>commons-daemon</artifactId>
-                <version>1.0.10</version>
+                <version>1.5.1</version>
             </dependency>
             <dependency>
                 <groupId>commons-cli</groupId>
                 <artifactId>commons-cli</artifactId>
-                <version>1.2</version>
+                <version>1.11.0</version>
             </dependency>
             <dependency>
                 <!-- Jetty 6.1 is the last version with support for Java 1.4 -->
@@ -154,10 +154,10 @@
                 <artifactId>jetty</artifactId>
                 <version>6.1.26</version>
             </dependency>
-            <dependency>
+			<dependency>
 				<groupId>org.glassfish.corba</groupId>
 				<artifactId>glassfish-corba-orb</artifactId>
-				<version>4.2.3</version>
+				<version>5.0.0</version>
 			</dependency>
         </dependencies>
     </dependencyManagement>
@@ -169,7 +169,7 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3.2</version>
+                    <version>3.5.0</version>
                     <configuration>
                         <archive>
                             <manifest>
@@ -181,8 +181,9 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.12.0</version>
                     <configuration>
-                        <source>17</source>
+                        <source>25</source>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -214,28 +215,32 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.7</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.4</version>
+                    <version>3.21.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.2.2</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.7</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-invoker-plugin</artifactId>
-                    <version>1.7</version>
+                    <version>3.9.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.mortbay.jetty</groupId>
@@ -244,11 +249,11 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.5.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>2.3</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-eclipse-plugin</artifactId>
@@ -264,7 +269,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.1.1</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -313,6 +318,7 @@
             <plugin>
                 <!-- Override the set of reports just for this project -->
                 <artifactId>maven-site-plugin</artifactId>
+                <version>3.21.0</version>
                 <inherited>false</inherited>
                 <configuration>
                     <reportPlugins>
@@ -394,7 +400,7 @@
         </plugins>
     </reporting>
     <properties>
-        <javaVersion>17</javaVersion>
+        <javaVersion>25</javaVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <baseUrl>http://axis.apache.org/axis/java</baseUrl>
