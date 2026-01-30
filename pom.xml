@@ -154,10 +154,10 @@
                 <artifactId>jetty</artifactId>
                 <version>6.1.26</version>
             </dependency>
-            <dependency>
+			<dependency>
 				<groupId>org.glassfish.corba</groupId>
 				<artifactId>glassfish-corba-orb</artifactId>
-				<version>4.2.3</version>
+				<version>5.0.0</version>
 			</dependency>
         </dependencies>
     </dependencyManagement>
