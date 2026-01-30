@@ -59,6 +59,16 @@ axis-rt-core/target/axis-rt-core-1.4.1-SNAPSHOT-all.jar
 
 **Java version:** This fork is adapted to build and run on **JDK 17 or 25**. Use Java 17+ for the shaded JAR.
 
+### Building with Java 25 bytecode
+
+The build defaults to Java 17 bytecode. If you want class files targeting **Java 25**, run Maven with:
+
+```bash
+mvn -DskipTests -Dmaven.compiler.release=25 <your-goal>
+```
+
+For a permanent change, set `<maven.compiler.release>25</maven.compiler.release>` in the root `pom.xml`.
+
 ---
 
 ## Configuration Notes
