@@ -3,42 +3,65 @@ package org.apache.axis.attachments;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.FilterInputStream;
+import java.io.ByteArrayInputStream;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import junit.framework.TestCase;
 
-import org.apache.axiom.testutils.activation.InstrumentedDataSource;
-import org.apache.axiom.testutils.activation.RandomDataSource;
 import org.apache.commons.io.output.NullOutputStream;
 
 public class TestDimeBodyPart extends TestCase {
 
-    private static jakarta.activation.DataSource asJakartaDataSource(final InstrumentedDataSource ds) {
-        return new jakarta.activation.DataSource() {
-            @Override
-            public InputStream getInputStream() throws IOException {
-                return ds.getInputStream();
-            }
+    private static final class InstrumentedDataSource implements jakarta.activation.DataSource {
+        private final byte[] data;
+        private final AtomicInteger openStreamCount = new AtomicInteger();
 
-            @Override
-            public OutputStream getOutputStream() throws IOException {
-                return ds.getOutputStream();
+        private InstrumentedDataSource(int size) {
+            this.data = new byte[size];
+            for (int i = 0; i < size; i++) {
+                data[i] = (byte)(i & 0xFF);
             }
+        }
 
-            @Override
-            public String getContentType() {
-                return ds.getContentType();
-            }
+        @Override
+        public InputStream getInputStream() {
+            openStreamCount.incrementAndGet();
+            return new FilterInputStream(new ByteArrayInputStream(data)) {
+                @Override
+                public void close() throws IOException {
+                    try {
+                        super.close();
+                    } finally {
+                        openStreamCount.decrementAndGet();
+                    }
+                }
+            };
+        }
 
-            @Override
-            public String getName() {
-                return ds.getName();
-            }
-        };
+        @Override
+        public OutputStream getOutputStream() {
+            throw new UnsupportedOperationException("Not used by this test");
+        }
+
+        @Override
+        public String getContentType() {
+            return "application/octet-stream";
+        }
+
+        @Override
+        public String getName() {
+            return "InstrumentedDataSource";
+        }
+
+        private int getOpenStreamCount() {
+            return openStreamCount.get();
+        }
     }
 
     public void testWriteToWithDynamicContentDataHandlerClosesInputStreams() throws Exception {
-        InstrumentedDataSource ds = new InstrumentedDataSource(new RandomDataSource(1000));
-        DimeBodyPart bp = new DimeBodyPart(new DynamicContentDataHandler(asJakartaDataSource(ds)), "1234");
+        InstrumentedDataSource ds = new InstrumentedDataSource(1000);
+        DimeBodyPart bp = new DimeBodyPart(new DynamicContentDataHandler(ds), "1234");
         bp.write(new NullOutputStream(), (byte) 0);
         assertEquals(0, ds.getOpenStreamCount());
     }
