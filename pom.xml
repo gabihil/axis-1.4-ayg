@@ -162,7 +162,7 @@
         </dependencies>
     </dependencyManagement>
     <prerequisites>
-        <maven>3.0.3</maven>
+        <maven>3.6.3</maven>
     </prerequisites>    
     <build>
         <pluginManagement>
@@ -214,7 +214,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.7</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
@@ -231,7 +231,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.7</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-invoker-plugin</artifactId>
@@ -274,7 +274,7 @@
                             <rules>
                                 <!-- We don't want to support Maven 2 and we need at least 3.0.4 to avoid MINVOKER-107 -->
                                 <requireMavenVersion>
-                                    <version>3.0.4</version>
+                                    <version>3.6.3</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
