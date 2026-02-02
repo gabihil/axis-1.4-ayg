@@ -167,25 +167,25 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
-                    <war>${project.build.directory}/interop-mock.war</war>
                     <stopKey>foo</stopKey>
                     <stopPort>${jetty.stopPort}</stopPort>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>${mock.httpPort}</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
+                    <httpConnector>
+                        <port>${mock.httpPort}</port>
+                        <idleTimeout>60000</idleTimeout>
+                    </httpConnector>
+                    <webApp>
+                        <war>${project.build.directory}/interop-mock.war</war>
+                    </webApp>
                 </configuration>
                 <executions>
                     <execution>
                         <id>start-jetty</id>
                         <phase>pre-integration-test</phase>
                         <goals>
-                            <goal>deploy-war</goal>
+                            <goal>run-war</goal>
                         </goals>
                         <configuration>
                             <daemon>true</daemon>
