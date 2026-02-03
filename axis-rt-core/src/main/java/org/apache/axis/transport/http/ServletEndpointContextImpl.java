@@ -15,10 +15,10 @@
  */
 package org.apache.axis.transport.http;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import javax.xml.rpc.handler.MessageContext;
 import javax.xml.rpc.server.ServletEndpointContext;
 import java.security.Principal;

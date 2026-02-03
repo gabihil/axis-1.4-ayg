@@ -20,16 +20,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.jms.InvalidDestinationException;
-import javax.jms.JMSException;
-import javax.jms.JMSSecurityException;
-import javax.jms.Message;
-import javax.jms.Queue;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueSession;
-import javax.jms.Topic;
-import javax.jms.TopicConnectionFactory;
-import javax.jms.TopicSession;
+import jakarta.jms.InvalidDestinationException;
+import jakarta.jms.JMSException;
+import jakarta.jms.JMSSecurityException;
+import jakarta.jms.Message;
+import jakarta.jms.Queue;
+import jakarta.jms.QueueConnectionFactory;
+import jakarta.jms.QueueSession;
+import jakarta.jms.Topic;
+import jakarta.jms.TopicConnectionFactory;
+import jakarta.jms.TopicSession;
 
 import org.apache.axis.MessageContext;
 import org.apache.axis.client.Call;
@@ -60,7 +60,7 @@ public abstract class JMSVendorAdapter
     public abstract void addVendorConnectionFactoryProperties(JMSURLHelper jmsurl, HashMap cfProps);
 
     // let adapters match connectors using vendor-specific connection factory properties
-    public abstract boolean isMatchingConnectionFactory(javax.jms.ConnectionFactory cf, JMSURLHelper jmsurl, HashMap cfProps);
+    public abstract boolean isMatchingConnectionFactory(jakarta.jms.ConnectionFactory cf, JMSURLHelper jmsurl, HashMap cfProps);
 
     // returns <adapter> in 'org.apache.axis.components.jms.<adapter>VendorAdapter'
     public String getVendorId()
@@ -232,9 +232,9 @@ public abstract class JMSVendorAdapter
         {
             int mode = JMSConstants.DEFAULT_DELIVERY_MODE;
             if (delivMode.equalsIgnoreCase(JMSConstants.DELIVERY_MODE_PERSISTENT))
-                mode = javax.jms.DeliveryMode.PERSISTENT;
+                mode = jakarta.jms.DeliveryMode.PERSISTENT;
             else if (delivMode.equalsIgnoreCase(JMSConstants.DELIVERY_MODE_NONPERSISTENT))
-                mode = javax.jms.DeliveryMode.NON_PERSISTENT;
+                mode = jakarta.jms.DeliveryMode.NON_PERSISTENT;
             context.setProperty(JMSConstants.DELIVERY_MODE, new Integer(mode));
         }
         else

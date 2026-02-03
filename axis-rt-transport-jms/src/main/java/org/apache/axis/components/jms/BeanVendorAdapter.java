@@ -18,9 +18,9 @@
 
 import java.util.HashMap;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.TopicConnectionFactory;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.QueueConnectionFactory;
+import jakarta.jms.TopicConnectionFactory;
 
 import org.apache.axis.utils.BeanPropertyDescriptor;
 import org.apache.axis.utils.BeanUtils;

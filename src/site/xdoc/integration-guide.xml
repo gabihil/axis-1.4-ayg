@@ -299,7 +299,7 @@ AxisClient = new AxisClient(config);</source>
     <p>The default behaviour is provided by the last two elements of the list of implementing classes, as described above:</p>
     <ul>
       <li><code>org.apache.axis.configuration.EngineConfigurationFactoryServlet</code>
-        <p><code>newFactory(obj)</code> is called. If <code>obj instanceof javax.servlet.ServletContext</code> is true, then an instance of this class is returned.</p>
+        <p><code>newFactory(obj)</code> is called. If <code>obj instanceof jakarta.servlet.ServletContext</code> is true, then an instance of this class is returned.</p>
         <p>The default Servlet factory is expected to function as a server (as a client it will incorrectly attempt to load the WSDD file <code>client-config.wsdd</code> from the current working directory!).</p>
         <p>The default Servlet factory will open the Web Application resource <code>/WEB-INF/server-config.wsdd</code> (The name of this file may be changed using the system property <code>axis.ServerConfigFile</code>):</p>
         <ul>

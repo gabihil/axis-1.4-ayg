@@ -18,7 +18,7 @@ package org.apache.axis.security.servlet;
 
 import org.apache.axis.security.AuthenticatedUser;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 /**

@@ -18,9 +18,9 @@ package org.apache.axis.transport.http;
 import org.apache.commons.logging.Log;
 import org.apache.axis.components.logger.LogFactory;
 
-import javax.servlet.http.HttpSessionListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionListener;
+import jakarta.servlet.http.HttpSessionEvent;
+import jakarta.servlet.http.HttpSession;
 import javax.xml.rpc.server.ServiceLifecycle;
 import java.util.Enumeration;
 
