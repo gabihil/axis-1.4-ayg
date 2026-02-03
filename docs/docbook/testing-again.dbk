@@ -149,7 +149,7 @@
       operations on app servers. "Weblogic doesnt save
       server-config.wsdd", "SunOne server has the wrong
       classpath", "Jboss.net won't compile .JWS pages that import
-      javax.servlet.*", etc, etc. We need to run more tests on production
+      jakarta.servlet.*", etc, etc. We need to run more tests on production
       systems, rather than wait for user feedback after we ship. Now everybody
       runs their apps on some such systems, so we have implicit testing, but
       it is not part of the daily Gump or any other regular, controlled test

@@ -162,7 +162,7 @@
         </dependencies>
     </dependencyManagement>
     <prerequisites>
-        <maven>3.0.3</maven>
+        <maven>3.6.3</maven>
     </prerequisites>    
     <build>
         <pluginManagement>
@@ -180,7 +180,16 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-remote-resources-plugin</artifactId>
+                    <version>3.3.0</version>
+                </plugin>
+                <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.12.0</version>
                     <configuration>
                         <source>25</source>
                     </configuration>
@@ -226,25 +235,30 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                 
                     <version>3.9.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-invoker-plugin</artifactId>
                     <version>3.9.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.mortbay.jetty</groupId>
+                    <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
-                    <version>8.1.16.v20140903</version>
+                    <version>11.0.26</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.5.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-shade-plugin</artifactId>
@@ -274,7 +288,7 @@
                             <rules>
                                 <!-- We don't want to support Maven 2 and we need at least 3.0.4 to avoid MINVOKER-107 -->
                                 <requireMavenVersion>
-                                    <version>3.0.4</version>
+                                    <version>3.6.3</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
@@ -295,6 +309,7 @@
                       (1) we want to generate source JARs for all builds, not just release builds;
                       (2) we need (some of) the source JARs to generate the Javadoc in the apidocs module. -->
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
                         <!-- Use the same ID as in org.apache:apache; otherwise, the goal
@@ -313,6 +328,7 @@
             <plugin>
                 <!-- Override the set of reports just for this project -->
                 <artifactId>maven-site-plugin</artifactId>
+                <version>3.21.0</version>
                 <inherited>false</inherited>
                 <configuration>
                     <reportPlugins>

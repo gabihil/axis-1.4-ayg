@@ -22,7 +22,7 @@ import org.apache.axis.MessageContext;
 import org.apache.axis.handlers.BasicHandler;
 import org.apache.axis.attachments.Attachments;
 
-import javax.jms.Destination;
+import jakarta.jms.Destination;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;

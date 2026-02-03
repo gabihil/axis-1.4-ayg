@@ -16,9 +16,9 @@
 
 package org.apache.axis.transport.jms;
 
-import javax.jms.DeliveryMode;
-import javax.jms.Message;
-import javax.jms.Session;
+import jakarta.jms.DeliveryMode;
+import jakarta.jms.Message;
+import jakarta.jms.Session;
 
 /**
  * JMSConstants contains constants that apply to all JMS providers.
@@ -77,7 +77,7 @@ public interface JMSConstants
      * a ReplyTo.  The client will always return null from invoke unless
      * a client-side exception is thrown (similar to invokeOneWay in semantics)
      * The value must be a <code>java.lang.Boolean</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String WAIT_FOR_RESPONSE               = JMS_PROPERTY_PREFIX + _WAIT_FOR_RESPONSE;
 
@@ -87,7 +87,7 @@ public interface JMSConstants
      * <code>createConnector</code> in <code>JMSConnectorFactory</code>
      * This is a required property for durable subscribers.
      * The value must be a <code>java.lang.String</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String CLIENT_ID                       = JMS_PROPERTY_PREFIX + _CLIENT_ID;
 
@@ -107,35 +107,35 @@ public interface JMSConstants
      * Key for properties used in the <code>send</code> and <code>call</code>
      * methods.  It is valid for either domain.
      * The value must be a <code>java.lang.String</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String JMS_CORRELATION_ID              = JMS_PROPERTY_PREFIX + _JMS_CORRELATION_ID;
     /**
      * Key for properties used in the <code>send</code> and <code>call</code>
      * methods.  It is valid for either domain.
      * The value must be a <code>byte[]</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String JMS_CORRELATION_ID_AS_BYTES     = JMS_PROPERTY_PREFIX + _JMS_CORRELATION_ID_AS_BYTES;
     /**
      * Key for properties used in the <code>send</code> and <code>call</code>
      * methods.  It is valid for either domain.
      * The value must be a <code>java.lang.String</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String JMS_TYPE                        = JMS_PROPERTY_PREFIX + _JMS_TYPE;
     /**
      * Key for properties used in the <code>send</code> and <code>call</code>
      * methods.  It is valid for either domain.
      * The value must be a <code>java.lang.Long</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String TIME_TO_LIVE                    = JMS_PROPERTY_PREFIX + _TIME_TO_LIVE;
     /**
      * Key for properties used in the <code>send</code> and <code>call</code>
      * methods.  It is valid for either domain.
      * The value must be a <code>java.lang.Integer</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String PRIORITY                        = JMS_PROPERTY_PREFIX + _PRIORITY;
     /**
@@ -143,7 +143,7 @@ public interface JMSConstants
      * methods.  It is valid for either domain.
      * The value must be a <code>java.lang.Integer</code> equal to
      * DeliveryMode.NON_PERSISTENT or DeliveryMode.PERSISTENT.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String DELIVERY_MODE                   = JMS_PROPERTY_PREFIX + _DELIVERY_MODE;
 
@@ -159,7 +159,7 @@ public interface JMSConstants
      * Key for properties used in the <code>registerListener</code>
      * method.  It is valid for either domain.
      * The value must be a <code>java.lang.String</code>.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String MESSAGE_SELECTOR                = JMS_PROPERTY_PREFIX + _MESSAGE_SELECTOR;
     /**
@@ -168,7 +168,7 @@ public interface JMSConstants
      * The value must be a <code>java.lang.Integer</code> that is one of
      * Session.AUTO_ACKNOWLEDGE, Session.DUPS_OK_ACKNOWLEDGE,
      * or Session.CLIENT_ACKNOWLEDGE.
-     * See the javax.jms javadoc for information on this property.
+     * See the jakarta.jms javadoc for information on this property.
      */
     final static String ACKNOWLEDGE_MODE                = JMS_PROPERTY_PREFIX + _ACKNOWLEDGE_MODE;
 

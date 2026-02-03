@@ -19,13 +19,13 @@ package org.apache.axis.components.jms;
 import java.util.HashMap;
 import java.util.Hashtable;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.Queue;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueSession;
-import javax.jms.Topic;
-import javax.jms.TopicConnectionFactory;
-import javax.jms.TopicSession;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Queue;
+import jakarta.jms.QueueConnectionFactory;
+import jakarta.jms.QueueSession;
+import jakarta.jms.Topic;
+import jakarta.jms.TopicConnectionFactory;
+import jakarta.jms.TopicSession;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
