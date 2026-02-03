@@ -166,7 +166,9 @@ public class CommonsHTTPSender extends BasicHandler {
                     addCookieHeaders(msgContext, request);
                 }
 
-                try (CloseableHttpResponse response = httpClient.execute(request, HttpClientContext.create())) {
+                CloseableHttpResponse response = null;
+                try {
+                    response = httpClient.execute(request, HttpClientContext.create());
                 int returnCode = response.getCode();
 
                 String contentType = 
@@ -273,6 +275,14 @@ public class CommonsHTTPSender extends BasicHandler {
                 // it was one way invocation
                     if (msgContext.isPropertyTrue("axis.one.way")) {
                         EntityUtils.consumeQuietly(response.getEntity());
+                    }
+                } finally {
+                    if (response != null) {
+                        try {
+                            response.close();
+                        } catch (IOException e) {
+                            log.debug("Error closing response in finally block", e);
+                        }
                     }
                 }
             }
