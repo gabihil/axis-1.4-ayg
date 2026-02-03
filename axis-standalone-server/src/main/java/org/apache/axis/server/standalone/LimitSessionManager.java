@@ -21,8 +21,6 @@ package org.apache.axis.server.standalone;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-import org.mortbay.jetty.servlet.AbstractSessionManager;
-import org.mortbay.jetty.servlet.HashSessionManager;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
