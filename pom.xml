@@ -181,6 +181,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.12.0</version>
                     <configuration>
                         <source>25</source>
                     </configuration>
@@ -244,7 +245,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.5.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-shade-plugin</artifactId>
@@ -313,6 +314,7 @@
             <plugin>
                 <!-- Override the set of reports just for this project -->
                 <artifactId>maven-site-plugin</artifactId>
+                <version>3.21.0</version>
                 <inherited>false</inherited>
                 <configuration>
                     <reportPlugins>
