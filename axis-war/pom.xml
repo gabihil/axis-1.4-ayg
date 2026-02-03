@@ -147,23 +147,21 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>foo</stopKey>
                     <stopPort>${jetty.stopPort}</stopPort>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>${test.functional.ServicePort}</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <webAppConfig>
+                    <httpConnector>
+                        <port>${test.functional.ServicePort}</port>
+                        <idleTimeout>60000</idleTimeout>
+                    </httpConnector>
+                    <webApp>
                         <contextPath>/axis</contextPath>
                         <descriptor>${project.build.directory}/web.xml</descriptor>
                         <resourceBase>${project.build.directory}/${project.build.finalName}</resourceBase>
-                    </webAppConfig>
+                    </webApp>
                 </configuration>
                 <executions>
                     <execution>

@@ -72,19 +72,17 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>9080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <webAppConfig>
+                    <httpConnector>
+                        <port>9080</port>
+                        <idleTimeout>60000</idleTimeout>
+                    </httpConnector>
+                    <webApp>
                         <contextPath>/</contextPath>
                         <descriptor>src/main/webapp/WEB-INF/web.xml</descriptor>
-                    </webAppConfig>
+                    </webApp>
                 </configuration>
             </plugin>
             <plugin>

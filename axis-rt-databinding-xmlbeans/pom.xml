@@ -62,6 +62,7 @@
                 <configuration>
                     <repackage>org.apache.axis.xmlbeans.metadata</repackage>
                     <sourceDir>${project.basedir}/src/main/xsd</sourceDir>
+                    <javaTargetDir>${project.build.directory}/generated-sources/xmlbeans</javaTargetDir>
                     <name>axis_rt_databinding_xmlbeans</name>
                 </configuration>
             </plugin>        
