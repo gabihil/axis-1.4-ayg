@@ -709,7 +709,7 @@
     <echo message="Ensuring Maven-built Axis runtime artifacts are available."/>
     <exec dir="${axis.home}" executable="mvn" failonerror="true">
       <arg value="-pl"/>
-      <arg value="axis"/>
+      <arg value="axis,axis-jaxrpc"/>
       <arg value="-am"/>
       <arg value="-DskipTests"/>
       <arg value="package"/>
