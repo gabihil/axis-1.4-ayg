@@ -22,6 +22,8 @@
     <pathelement location="${build.dir}/tools" />
     <pathelement location="${build.lib}/axis-ant.jar" />
     <pathelement location="${build.lib}/axis-schema.jar" />
+    <pathelement location="${build.lib}/${name}.jar" />
+    <pathelement location="${build.lib}/${jaxrpc}.jar" />
 <!--
     <pathelement location="${build.dir}/work" />
 -->
