@@ -238,11 +238,6 @@
                     <version>3.8.1</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                 
-                    <version>3.9.0</version>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>3.6.1</version>

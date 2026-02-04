@@ -44,6 +44,19 @@ Copyright:
         &paths;
         &taskdefs;
         &targets;
+
+<condition property="axis-ant.sources.present">
+  <available file="${axis.home}/axis-ant/src/main/java" type="dir"/>
+</condition>
+<condition property="axis-ant.target.classes.present">
+  <available file="${axis.home}/axis-ant/target/classes" type="dir"/>
+</condition>
+<condition property="axis-ant.source-or-target.present">
+  <or>
+    <isset property="axis-ant.sources.present"/>
+    <isset property="axis-ant.target.classes.present"/>
+  </or>
+</condition>
 <property name="tools.build.dir" location="${build.dir}/tools" />
 
 
@@ -61,51 +74,12 @@ Copyright:
   description="compile everthing and make the JARs">
   <echo message="Compiling tools.*"/>
   <mkdir dir="${tools.build.dir}"/>
-    <!-- build my ForEach task -->
-  <echo message="Building ForEach" />
-  <javac srcdir="${axis.home}/axis-ant/src/main/java"
-      debug="${debug}"
-      source="${source}"
-      nowarn="${nowarn}"
-      destdir="${tools.build.dir}">
-    <classpath refid="classpath"/>
-    <include name="org/apache/axis/tools/ant/foreach/*.java" />
-  </javac>
+  <fail message="axis-ant sources or prebuilt classes not available; please provide ${axis.home}/axis-ant/src or run a Maven build for axis-ant"
+        unless="axis-ant.source-or-target.present"/>
 
-    <!-- build the RunAxisFunctionalTest task -->
-  <echo message="Building RunAxisFunctionalTest" />
-  <javac srcdir="${axis.home}/axis-ant/src/main/java"
-      debug="${debug}"
-      source="${source}"
-      nowarn="${nowarn}"
-      destdir="${tools.build.dir}">
-    <classpath>
-      <path refid="classpath"/>
-      <pathelement location="${build.lib}/${name}.jar"/>
-      <pathelement location="${build.lib}/${jaxrpc}.jar"/>
-    </classpath>
-    <include name="org/apache/axis/tools/ant/axis/*.java" />
-  </javac>
-
-    <!-- build the wsdl2java and java2wsdl tasks -->
-  <echo message="Building WSDL tasks" />
-  <javac srcdir="${axis.home}/axis-ant/src/main/java"
-    debug="${debug}"
-      source="${source}"
-      nowarn="${nowarn}"
-    destdir="${tools.build.dir}">
-    <classpath>
-      <pathelement location="${build.lib}/${name}.jar"/>
-      <pathelement location="${build.lib}/${jaxrpc}.jar"/>
-      <path refid="classpath"/>
-    </classpath>
-    <include name="org/apache/axis/tools/ant/wsdl/*.java" />
-  </javac>
-
-  <copy todir="${tools.build.dir}/${componentName}/foreach">
-    <fileset dir="${basedir}/../axis-ant/src/main/java/${componentName}/foreach"
-             excludes="**/*.java"/>
-  </copy>
+  <antcall target="prepare-axis-ant-from-source"/>
+  <antcall target="prepare-axis-ant-from-target"/>
+  <antcall target="copy-foreach-resources"/>
 
   <copy todir="${tools.build.dir}" >
     <fileset dir="${tools.dir}"
@@ -127,6 +101,65 @@ Copyright:
       </section>
     </manifest>
   </jar>
+</target>
+
+<target name="prepare-axis-ant-from-source" if="axis-ant.sources.present">
+  <!-- build my ForEach task -->
+  <echo message="Building ForEach" />
+  <javac srcdir="${axis.home}/axis-ant/src/main/java"
+      debug="${debug}"
+      source="${source}"
+      nowarn="${nowarn}"
+      destdir="${tools.build.dir}">
+    <classpath refid="classpath"/>
+    <include name="org/apache/axis/tools/ant/foreach/*.java" />
+  </javac>
+
+  <!-- build the RunAxisFunctionalTest task -->
+  <echo message="Building RunAxisFunctionalTest" />
+  <javac srcdir="${axis.home}/axis-ant/src/main/java"
+      debug="${debug}"
+      source="${source}"
+      nowarn="${nowarn}"
+      destdir="${tools.build.dir}">
+    <classpath>
+      <path refid="classpath"/>
+      <pathelement location="${build.lib}/${name}.jar"/>
+      <pathelement location="${build.lib}/${jaxrpc}.jar"/>
+    </classpath>
+    <include name="org/apache/axis/tools/ant/axis/*.java" />
+  </javac>
+
+  <!-- build the wsdl2java and java2wsdl tasks -->
+  <echo message="Building WSDL tasks" />
+  <javac srcdir="${axis.home}/axis-ant/src/main/java"
+    debug="${debug}"
+      source="${source}"
+      nowarn="${nowarn}"
+    destdir="${tools.build.dir}">
+    <classpath>
+      <pathelement location="${build.lib}/${name}.jar"/>
+      <pathelement location="${build.lib}/${jaxrpc}.jar"/>
+      <path refid="classpath"/>
+    </classpath>
+    <include name="org/apache/axis/tools/ant/wsdl/*.java" />
+  </javac>
+</target>
+
+<target name="prepare-axis-ant-from-target"
+        if="axis-ant.target.classes.present"
+        unless="axis-ant.sources.present">
+  <echo message="Reusing precompiled axis-ant classes from ${axis.home}/axis-ant/target/classes"/>
+  <copy todir="${tools.build.dir}">
+    <fileset dir="${axis.home}/axis-ant/target/classes"/>
+  </copy>
+</target>
+
+<target name="copy-foreach-resources" if="axis-ant.sources.present">
+  <copy todir="${tools.build.dir}/${componentName}/foreach">
+    <fileset dir="${basedir}/../axis-ant/src/main/java/${componentName}/foreach"
+             excludes="**/*.java"/>
+  </copy>
 </target>
 
 <target name="test" unless="axis-ant.present" description="tests">
