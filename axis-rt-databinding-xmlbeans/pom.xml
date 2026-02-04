@@ -64,7 +64,7 @@
                     <sourceDir>${project.basedir}/src/main/xsd</sourceDir>
                     <name>axis_rt_databinding_xmlbeans</name>
                 </configuration>
-            </plugin>        
+            </plugin>
         </plugins>
     </build>
 </project>
