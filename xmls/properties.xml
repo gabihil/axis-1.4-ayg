@@ -17,6 +17,7 @@
 <property name="nowarn" value="off" />
 
 <property name="axis.version" value="1.4" />
+<property name="axis.maven.version" value="1.4.1-SNAPSHOT"/>
 <!-- This should be the version # above with dots replaced by underscores -->
 <property name="axis.dirname" value="1_4" />
 

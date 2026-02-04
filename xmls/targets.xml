@@ -700,8 +700,24 @@
        <and>
          <available classname="org.apache.xmlbeans.impl.tool.XMLBean" classpathref="classpath" />
          <not>
-		    <available file="${build.lib}/axis-schema.jar"/>
+            <available file="${build.lib}/axis-schema.jar"/>
          </not>
        </and>
      </condition>
+  </target>
+
+  <target name="maven-axis-uber" unless="maven.axis.built">
+    <echo message="Ensuring Maven-built Axis runtime artifacts are available."/>
+    <exec dir="${axis.home}" executable="mvn" failonerror="true">
+      <arg value="-pl"/>
+      <arg value="axis"/>
+      <arg value="-am"/>
+      <arg value="-DskipTests"/>
+      <arg value="package"/>
+    </exec>
+    <copy file="${axis.home}/axis/target/axis-uber-${axis.maven.version}.jar"
+          tofile="${build.lib}/${name}.jar" overwrite="true"/>
+    <copy file="${axis.home}/axis-jaxrpc/target/axis-jaxrpc-${axis.maven.version}.jar"
+          tofile="${build.lib}/${jaxrpc}.jar" overwrite="true"/>
+    <property name="maven.axis.built" value="true"/>
   </target>

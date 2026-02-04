@@ -165,21 +165,24 @@ Copyright:
       <exclude name="**/org/apache/axis/transport/mail/*.java" unless="commons-net.present"/>
       <bootclasspath refid="boot.classpath"/>
     </javac>
+    <mkdir dir="${build.dest}/org/apache/axis/server"/>
+    <mkdir dir="${build.dest}/org/apache/axis/client"/>
     <copy file="${src.dir}/org/apache/axis/server/server-config.wsdd"
-          toDir="${build.dest}/org/apache/axis/server"/>
+          toDir="${build.dest}/org/apache/axis/server" failonerror="false"/>
     <copy file="${src.dir}/org/apache/axis/client/client-config.wsdd"
-          toDir="${build.dest}/org/apache/axis/client"/>
+          toDir="${build.dest}/org/apache/axis/client" failonerror="false"/>
     <copy file="${src.dir}/log4j.properties"
-          toDir="${build.dest}"/>
+          toDir="${build.dest}" failonerror="false"/>
     <copy file="${src.dir}/simplelog.properties"
-          toDir="${build.dest}"/>
-    <copy toDir="${build.dest}/org/apache/axis/i18n">
+          toDir="${build.dest}" failonerror="false"/>
+    <mkdir dir="${build.dest}/org/apache/axis/i18n"/>
+    <copy toDir="${build.dest}/org/apache/axis/i18n" failonerror="false">
         <fileset dir="${src.dir}/org/apache/axis/i18n" includes="resource*.properties"/>
     </copy>
-    <copy toDir="${build.dest}/org/apache/axis/utils">
+    <mkdir dir="${build.dest}/org/apache/axis/utils"/>
+    <copy toDir="${build.dest}/org/apache/axis/utils" failonerror="false">
         <fileset dir="${src.dir}/org/apache/axis/utils" includes="tcpmon*.properties"/>
     </copy>
-
     <tstamp>
       <format property="build.time" pattern="MMM dd, yyyy (hh:mm:ss z)" locale="en"/>
     </tstamp>
@@ -223,14 +226,15 @@ Copyright:
         </section>
       </manifest>
     </jar>
-    <copy file="${wsdl4j.jar}" toDir="${build.lib}"/>
-    <copy file="${commons-logging.jar}" toDir="${build.lib}"/>
-    <copy file="${commons-discovery.jar}" toDir="${build.lib}"/>
-    <copy file="${log4j-core.jar}" toDir="${build.lib}"/>
-    <copy file="${src.dir}/log4j.properties"
-          toDir="${build.lib}"/>
+     <copy file="${wsdl4j.jar}" toDir="${build.lib}"/>
+     <copy file="${commons-logging.jar}" toDir="${build.lib}"/>
+     <copy file="${commons-discovery.jar}" toDir="${build.lib}"/>
+     <copy file="${log4j-core.jar}" toDir="${build.lib}"/>
+     <copy file="${src.dir}/log4j.properties"
+          toDir="${build.lib}" failonerror="false"/>
 
      <!--  Build the new org.apache.axis.tools.ant stuff -->
+     <antcall target="maven-axis-uber"/>
      <mkdir dir="${axis.home}/tools/lib" />
      <ant inheritAll="${ant.inheritAll}" inheritRefs="${ant.inheritRefs}" dir="${axis.home}/tools" antfile="build.xml" />
      <ant inheritAll="${ant.inheritAll}" inheritRefs="${ant.inheritRefs}" dir="${axis.home}/tools" antfile="build.xml" target="test"/>
