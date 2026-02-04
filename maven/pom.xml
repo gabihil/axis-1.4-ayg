@@ -76,27 +76,31 @@
     <build>
         <plugins>
             <plugin>
-                <!-- This overrides the set of reports (we don't want to generate the reports defined in the parent POM) -->
+                <!-- Keep the Maven Site plugin version stable while avoiding report configuration
+                     inside <configuration>. -->
                 <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <!-- This will be ignored for this project, but executed in submodules -->
-                            <artifactId>maven-plugin-plugin</artifactId>
-                            <version>2.9</version>
-                        </plugin>
-                        <plugin>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>2.6</version>
-                            <reports>
-                                <report>index</report>
-                            </reports>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
+                <version>3.21.0</version>
             </plugin>
         </plugins>
     </build>
-    
-    
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.6</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
 </project>

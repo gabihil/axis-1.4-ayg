@@ -321,25 +321,11 @@
                 </configuration>
             </plugin>
             <plugin>
-                <!-- Override the set of reports just for this project -->
+                <!-- Keep the Maven Site plugin version locked, but move the reports
+                     declaration into the proper <reporting> section below. -->
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.21.0</version>
                 <inherited>false</inherited>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>3.9.0</version>
-                            <reports>
-                                <report>index</report>
-                                <report>issue-tracking</report>
-                                <report>mailing-list</report>
-                                <!-- report>project-team</report -->
-                                <report>scm</report>
-                            </reports>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -382,9 +368,7 @@
         </profile>
     </profiles>
     <reporting>
-        <!-- Note that the reporting plugins configured here are only executed in submodules
-             (because the configuration of the maven-site-plugin in this POM overrides the
-             reports configured here). -->
+        <!-- Configure the reports that the site generation should produce for this build. -->
         <plugins>
             <plugin>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -395,6 +379,10 @@
                             <report>index</report>
                             <report>summary</report>
                             <report>dependencies</report>
+                            <report>issue-tracking</report>
+                            <report>mailing-list</report>
+                            <!-- report>project-team</report -->
+                            <report>scm</report>
                         </reports>
                     </reportSet>
                 </reportSets>
