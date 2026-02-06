@@ -57,7 +57,7 @@ under the License.
     <repository>
       <id>apache.snapshots</id>
       <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots</url>
+      <url>https://repository.apache.org/snapshots</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -390,4 +390,3 @@ under the License.
     </profile>    
   </profiles>
 </project>
-
