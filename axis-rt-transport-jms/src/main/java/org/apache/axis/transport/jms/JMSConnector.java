@@ -18,15 +18,15 @@ package org.apache.axis.transport.jms;
 
 import org.apache.axis.components.jms.JMSVendorAdapter;
 
-import javax.jms.BytesMessage;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.ExceptionListener;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
+import jakarta.jms.BytesMessage;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Destination;
+import jakarta.jms.ExceptionListener;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.MessageProducer;
+import jakarta.jms.Session;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -90,7 +90,7 @@ public abstract class JMSConnector
         // try to connect initially so we can fail fast
         // in the case of irrecoverable errors.
         // If we fail in a recoverable fashion we will retry
-        javax.jms.Connection sendConnection = createConnectionWithRetry(
+        jakarta.jms.Connection sendConnection = createConnectionWithRetry(
                                                                 connectionFactory,
                                                                 username,
                                                                 password);
@@ -104,7 +104,7 @@ public abstract class JMSConnector
 
         if(m_allowReceive)
         {
-            javax.jms.Connection receiveConnection = createConnectionWithRetry(
+            jakarta.jms.Connection receiveConnection = createConnectionWithRetry(
                                                             connectionFactory,
                                                             username,
                                                             password);
@@ -159,13 +159,13 @@ public abstract class JMSConnector
         return m_jmsurl;
     }
 
-    protected javax.jms.Connection createConnectionWithRetry(
+    protected jakarta.jms.Connection createConnectionWithRetry(
                                             ConnectionFactory connectionFactory,
                                             String username,
                                             String password)
         throws JMSException
     {
-        javax.jms.Connection connection = null;
+        jakarta.jms.Connection connection = null;
         for(int numTries = 1; connection == null; numTries++)
         {
             try
@@ -215,7 +215,7 @@ public abstract class JMSConnector
         throws JMSException;
 
 
-    protected abstract javax.jms.Connection internalConnect(
+    protected abstract jakarta.jms.Connection internalConnect(
                                                 ConnectionFactory connectionFactory,
                                                 String username,
                                                 String password)
@@ -224,7 +224,7 @@ public abstract class JMSConnector
     private abstract class Connection extends Thread implements ExceptionListener
     {
         private ConnectionFactory m_connectionFactory;
-        protected javax.jms.Connection m_connection;
+        protected jakarta.jms.Connection m_connection;
 
         protected boolean m_isActive;
         private boolean m_needsToConnect;
@@ -237,7 +237,7 @@ public abstract class JMSConnector
         private Object m_lifecycleLock;
 
         protected Connection(ConnectionFactory connectionFactory,
-                             javax.jms.Connection connection,
+                             jakarta.jms.Connection connection,
                              String threadName,
                              String clientID,
                              String username,
@@ -415,7 +415,7 @@ public abstract class JMSConnector
     }
 
     protected abstract SyncConnection createSyncConnection(ConnectionFactory factory,
-                                                           javax.jms.Connection connection,
+                                                           jakarta.jms.Connection connection,
                                                            int numSessions,
                                                            String threadName,
                                                            String clientID,
@@ -436,7 +436,7 @@ public abstract class JMSConnector
         Object     m_senderLock;
 
         SyncConnection(ConnectionFactory connectionFactory,
-                       javax.jms.Connection connection,
+                       jakarta.jms.Connection connection,
                        int numSessions,
                        String threadName,
                        String clientID,
@@ -451,7 +451,7 @@ public abstract class JMSConnector
             m_senderLock = new Object();
         }
 
-        protected abstract SendSession createSendSession(javax.jms.Connection connection)
+        protected abstract SendSession createSendSession(jakarta.jms.Connection connection)
             throws JMSException;
 
         protected void onConnect()
@@ -763,7 +763,7 @@ public abstract class JMSConnector
     }
 
     protected abstract AsyncConnection createAsyncConnection(ConnectionFactory factory,
-                                                             javax.jms.Connection connection,
+                                                             jakarta.jms.Connection connection,
                                                              String threadName,
                                                              String clientID,
                                                              String username,
@@ -777,7 +777,7 @@ public abstract class JMSConnector
         Object m_subscriptionLock;
 
         protected AsyncConnection(ConnectionFactory connectionFactory,
-                                  javax.jms.Connection connection,
+                                  jakarta.jms.Connection connection,
                                   String threadName,
                                   String clientID,
                                   String username,
@@ -791,7 +791,7 @@ public abstract class JMSConnector
         }
 
         protected abstract ListenerSession createListenerSession(
-                                                javax.jms.Connection connection,
+                                                jakarta.jms.Connection connection,
                                                 Subscription subscription)
             throws Exception;
 

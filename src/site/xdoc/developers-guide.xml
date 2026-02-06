@@ -239,11 +239,11 @@ log destinations.</p>
   </li>
 
   <li><b>org.apache.axis.transport.http.HTTPConstants.MC_HTTP_SERVLETREQUEST</b>
-    <p>The <code>javax.servlet.http.HttpServletRequest</code> object from the Axis servlet that invoked the query string plug-in</p>
+    <p>The <code>jakarta.servlet.http.HttpServletRequest</code> object from the Axis servlet that invoked the query string plug-in</p>
   </li>
 
   <li><b>org.apache.axis.transport.http.HTTPConstants.MC_HTTP_SERVLETRESPONSE</b>
-    <p>The <code>javax.servlet.http.HttpServletResponse</code> object from the Axis servlet that invoked the query string plug-in</p>
+    <p>The <code>jakarta.servlet.http.HttpServletResponse</code> object from the Axis servlet that invoked the query string plug-in</p>
   </li>
 
   <li><b>org.apache.axis.transport.http.HTTPConstants.PLUGIN_WRITER</b>

@@ -83,6 +83,8 @@
 <property name="axis.war.filename" value="axis.war"/>
 <property name="axis.war" location="${build.dir}/${axis.war.filename}"/>
 
+<property name="javadoc.notrequired" value="true"/>
+
 <property name="webapp" location="${axis.home}/webapps/axis" />
 <property name="dist.dir" location="${axis.home}/axis-${axis.dirname}" />
 

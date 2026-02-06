@@ -16,7 +16,7 @@
 
 package org.apache.axis.configuration;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 /**
  * This is a 'front' for replacement logic.

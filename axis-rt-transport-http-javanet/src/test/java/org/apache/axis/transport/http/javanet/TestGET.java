@@ -31,6 +31,7 @@ import org.apache.axis.types.Time;
 
 public class TestGET extends TestCase {
     public void testXMLP2() throws Exception {
+        Thread.sleep(10000);
         Call call = new Call("http://localhost:" + System.getProperty("jetty.httpPort", "9080") + "/soap12/add-test-doc/getTime");
         call.setSOAPVersion(SOAPConstants.SOAP12_CONSTANTS);
         call.setProperty(SOAP12Constants.PROP_WEBMETHOD, "GET");
@@ -43,6 +44,7 @@ public class TestGET extends TestCase {
     }
 
     public void testXMLP3() throws Exception {
+        Thread.sleep(10000);
         Call call = new Call("http://localhost:" + System.getProperty("jetty.httpPort", "9080") + "/soap12/add-test-rpc/getTime");
         call.setSOAPVersion(SOAPConstants.SOAP12_CONSTANTS);
         call.setProperty(SOAP12Constants.PROP_WEBMETHOD, "GET");

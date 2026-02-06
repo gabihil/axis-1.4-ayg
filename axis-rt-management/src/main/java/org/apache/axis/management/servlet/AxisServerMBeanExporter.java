@@ -18,8 +18,8 @@
  */
 package org.apache.axis.management.servlet;
 
-import javax.servlet.ServletContextAttributeEvent;
-import javax.servlet.ServletContextAttributeListener;
+import jakarta.servlet.ServletContextAttributeEvent;
+import jakarta.servlet.ServletContextAttributeListener;
 
 import org.apache.axis.management.ServiceAdmin;
 import org.apache.axis.server.AxisServer;

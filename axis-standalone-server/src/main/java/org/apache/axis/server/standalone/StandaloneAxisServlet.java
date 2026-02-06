@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.axis.WSDDEngineConfiguration;
 import org.apache.axis.deployment.wsdd.WSDDDeployment;
