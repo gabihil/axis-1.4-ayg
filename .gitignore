@@ -3,6 +3,7 @@
 .m2/
 .mvn/
 .settings
+/build/
 target
 .idea
 *.iml
